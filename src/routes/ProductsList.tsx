@@ -1,6 +1,10 @@
-import { Heart } from "lucide-react";
-import React from "react";
+import { ArrowBigDown, Heart } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
+import FilterBy from "../components/ProductsListPage/FilterBy";
+import SortBy from "../components/ProductsListPage/SortBy";
+import Product from "../components/ProductsListPage/ProductCard";
 
 const ProductsList = () => {
     const products = [
@@ -198,18 +202,19 @@ const ProductsList = () => {
                     ))}
                 </aside>
                 <main className="flex flex-col flex-1">
-                    <h1 className="text-5xl mb-8">الأولاد 9-14 سنوات</h1>
-                    <div>
-                        <div className=" flex-wrap flex justify-center">
-                            {products.map((product, index) => (
-                                <Product
-                                    img={product.image}
-                                    name={product.name}
-                                    price={product.price}
-                                    key={index}
-                                />
-                            ))}
-                        </div>
+                    <h1 className="lg:text-5xl text-xl text-center mb-8">
+                        الأولاد 9-14 سنوات
+                    </h1>
+                    <Filters />
+                    <div className=" flex-wrap flex justify-between mt-5">
+                        {products.map((product, index) => (
+                            <Product
+                                img={product.image}
+                                name={product.name}
+                                price={product.price}
+                                key={index}
+                            />
+                        ))}
                     </div>
                 </main>
             </div>
@@ -219,34 +224,14 @@ const ProductsList = () => {
 
 export default ProductsList;
 
-const Product = ({
-    img,
-    name,
-    price,
-}: {
-    img: string;
-    name: string;
-    price: number;
-}) => {
+const Filters = () => {
     return (
-        <div className="sm:w-[280px] w-1/2 sm:h-[450px] mb-[55px] px-2 ">
-            <div className="flex flex-col h-full">
-                <Link to="#" className="relative hover:scale-105 duration-200">
-                    <img
-                        src={img}
-                        alt=""
-                        className="w-full sm:h-[395px] object-cover "
-                    />
-                    <Heart
-                        strokeWidth={1}
-                        className="absolute top-1 left-1 hover:fill-current hover:text-red-500 size-[35px]"
-                    />
-                </Link>
-                <div className="flex flex-col text-sm mt-auto">
-                    <p className="whitespace-nowrap overflow-hidden">{name}</p>
-                    <p>{`${price.toFixed(2)} ج.م`}</p>
-                </div>
-            </div>
+        <div className="flex gap-2 px-2">
+            <SortBy />
+            <FilterBy FilterName="السعر" />
+            <FilterBy FilterName="المقاس" />
+            <FilterBy FilterName="اللون" />
+            <FilterBy FilterName="نوع المنتج" />
         </div>
     );
 };
