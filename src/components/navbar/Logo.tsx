@@ -9,7 +9,7 @@ const Logo = () => {
             </div>
             <div>
                 <img
-                    src="./site-logo.svg"
+                    src="/site-logo.svg"
                     alt=""
                     className="lg:w-[70px] lg:h-[44px] w-[45px] h-[30px] mx-auto min-w-fit"
                 />
