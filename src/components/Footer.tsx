@@ -28,7 +28,7 @@ const Footer = () => {
                     <Link href="#" text="الاستدامة" />
                 </ul>
             </div>
-            <div className="flex flex-col gap-5 w-[155px]">
+            <div className="flex flex-col gap-5  w-[155px]">
                 <h3>خدمة الزبائن</h3>
                 <ul className="flex flex-col gap-2">
                     <Link href="#" text="الأسئلة المتكررة" />
