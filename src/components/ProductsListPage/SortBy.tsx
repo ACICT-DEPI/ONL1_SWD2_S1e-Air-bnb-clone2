@@ -32,8 +32,8 @@ const SortBy = () => {
                 <span className="pl-2 text-sm font-bold">رتب حسب</span>
                 <MdKeyboardArrowDown
                     size={25}
-                    className={`text-slate-500 duration-300 ${
-                        showSort && "rotate-180 text-red-500"
+                    className={` duration-300 ${
+                        showSort ? "rotate-180 text-red-500" : "text-slate-500 "
                     }`}
                 />
             </button>
