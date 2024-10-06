@@ -135,8 +135,6 @@ const ProductsList = () => {
     };
 
     const updateFilter = (filterType, value) => {
-        console.log(filterType, value);
-
         setSelectedFilters((prev) => ({
             ...prev,
             [filterType]: value,
