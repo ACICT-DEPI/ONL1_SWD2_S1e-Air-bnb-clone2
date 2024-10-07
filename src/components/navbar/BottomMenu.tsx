@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const BottomMenu = () => {
     return (
@@ -9,25 +8,25 @@ const BottomMenu = () => {
                     className="hover:border-black border-transparent border-b-2 pb-1
                 "
                 >
-                    <Link to="/women/view-all">النساء</Link>
+                    <a href="#">النساء</a>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/men/view-all">الرجال</Link>
+                    <a href="#">الرجال</a>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/boys/view-all">الرضع</Link>
+                    <a href="#">الرضع</a>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/kids/view-all">الاطفال</Link>
+                    <a href="#">الاطفال</a>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/home-decor/view-all">اتش اند ام هوم</Link>
+                    <a href="#">اتش اند ام هوم</a>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/sports/view-all">الملابس الرياضية</Link>
+                    <a href="#">الملابس الرياضية</a>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/discounts/view-all">التنزيلات</Link>
+                    <a href="#">التنزيلات</a>
                 </li>
             </ul>
         </div>
