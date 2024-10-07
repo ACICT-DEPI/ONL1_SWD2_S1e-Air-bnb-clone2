@@ -58,8 +58,7 @@ const Carousel = ({
                 </div>
             </div>
             <button
-                className={`absolute top-[40%] transform -translate-y-1/2 -right-3   p-1  
-                       ${currentIndex === 0 ? "hidden" : ""}  `}
+                className={`absolute top-[40%] transform -translate-y-1/2 -right-3   p-1   ${currentIndex === 0 ? "hidden" : ""}  `}
                 onClick={prevSlide}
                 disabled={currentIndex === 0}
             >
@@ -67,12 +66,11 @@ const Carousel = ({
             </button>
             <button
                 className={`absolute top-[40%]  transform -translate-y-1/2 -left-3   p-1 
-                       ${
-                           currentIndex >=
-                           Math.floor(prodcuts.length / itemsPerSlide) - 1
-                               ? "opacity-25"
-                               : ""
-                       } `}
+                    ${currentIndex >=
+                        Math.floor(prodcuts.length / itemsPerSlide) - 1
+                        ? "opacity-25"
+                        : ""
+                    } `}
                 onClick={nextSlide}
                 disabled={
                     currentIndex >=
@@ -86,11 +84,10 @@ const Carousel = ({
                     (_, index) => (
                         <button
                             key={index}
-                            className={`${
-                                currentIndex === index
-                                    ? "bg-[#e50010] border-none"
-                                    : "bg-white"
-                            } size-2 border rounded-full border-black`}
+                            className={`${currentIndex === index
+                                ? "bg-[#e50010] border-none"
+                                : "bg-white"
+                                } size-2 border rounded-full border-black`}
                             onClick={() => setCurrentIndex(index)}
                         ></button>
                     )

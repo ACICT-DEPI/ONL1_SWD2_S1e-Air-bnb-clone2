@@ -15,8 +15,8 @@ const Footer = () => {
         );
     };
     return (
-        <div className="flex items-start flex-wrap bg-[#e4e4e4] justify-center p-4 sm:p-10 lg:px-32 lg:py-10 gap-52 ">
-            <div className="flex flex-col gap-5">
+        <div className="flex items-start flex-wrap bg-[#e4e4e4] justify-center p-4 sm:p-10 lg:px-32 lg:py-10 gap-52  mt-10">
+            <div className="flex flex-col gap-5 w-[155px]">
                 <h3>حول اتش آند ام</h3>
                 <ul className="flex flex-col gap-2">
                     <Link href="#" text="معلومات عنا" />
@@ -28,7 +28,7 @@ const Footer = () => {
                     <Link href="#" text="الاستدامة" />
                 </ul>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 w-[155px]">
                 <h3>خدمة الزبائن</h3>
                 <ul className="flex flex-col gap-2">
                     <Link href="#" text="الأسئلة المتكررة" />
