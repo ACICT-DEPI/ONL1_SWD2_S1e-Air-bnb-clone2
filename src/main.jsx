@@ -10,6 +10,7 @@ import HomePage from "./routes/HomePage";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
 import Product from "./routes/Product";
+import ProductsList from "./routes/ProductsList";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
             {
                 path: "product",
                 element: <Product />,
+            },
+            {
+                path: ":shop/view-all",
+                element: <ProductsList />,
+            },
+            {
+                path: "*",
+                element: <ErrorPage />,
             },
         ],
     },
