@@ -12,6 +12,7 @@ import Register from './routes/Register'
 import Product from './routes/Product'
 import ProductsList from './routes/ProductsList'
 import WomenShop from './routes/WomenShop'
+import Input from './components/navbar/Input'
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
                 path: '*',
                 element: <ErrorPage />,
             },
+            {
+                path:"search/" ,
+                element:<Input />,
+            },
+
         ],
     },
 ])
