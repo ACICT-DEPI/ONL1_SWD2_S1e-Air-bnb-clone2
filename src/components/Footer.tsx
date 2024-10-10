@@ -2,6 +2,7 @@ import React from "react";
 import { BsTwitterX } from "react-icons/bs";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const Link = ({ href, text }: { href: string; text: string }) => {
@@ -19,7 +20,7 @@ const Footer = () => {
             <div className="flex flex-col gap-5 w-[155px]">
                 <h3>حول اتش آند ام</h3>
                 <ul className="flex flex-col gap-2">
-                    <Link href="#" text="معلومات عنا" />
+                    <Link href="/about" text="معلومات عنا" />
                     <Link href="#" text="معلومات التوصيل" />
                     <Link href="#" text="شروط وأحكام الشراء" />
                     <Link href="#" text="شروط وأحكام الموقع" />
