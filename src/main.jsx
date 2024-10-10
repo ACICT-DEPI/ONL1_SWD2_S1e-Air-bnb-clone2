@@ -12,7 +12,7 @@ import Register from './routes/Register'
 import Product from './routes/Product'
 import ProductsList from './routes/ProductsList'
 import WomenShop from './routes/WomenShop'
-import Input from './components/navbar/Input'
+import Input from './routes/Search'
 import ProfilePage from './routes/ProfilePage'
 import ProductsPage from './routes/ProductsPage' // استيراد الصفحة الجديدة
 
@@ -61,6 +61,8 @@ const router = createBrowserRouter([
                 element: <ErrorPage />,
             },
             {
+                path: 'search/',
+                element: <Input />,
                 path: 'search/',
                 element: <Input />,
             },
