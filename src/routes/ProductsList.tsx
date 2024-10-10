@@ -6,7 +6,7 @@ import FilterBy from "../components/ProductsListPage/FilterBy";
 import SortBy from "../components/ProductsListPage/SortBy";
 import Product from "../components/ProductsListPage/ProductCard";
 
-const ProductsList = () => {
+const ProductsList = ({name}) => {
     const products = [
         {
             id: "",
@@ -115,6 +115,7 @@ const ProductsList = () => {
         color: null,
         size: null,
         category: null,
+        name:name ,
     });
 
     const applyFilters = () => {
@@ -128,7 +129,9 @@ const ProductsList = () => {
                     (!selectedFilters.size ||
                         product.size === selectedFilters.size) &&
                     (!selectedFilters.category ||
-                        product.category === selectedFilters.category)
+                        product.category === selectedFilters.category) &&
+                        (!selectedFilters.name ||
+                            product.name.includes(selectedFilters.name)) 
                 );
             })
         );
@@ -140,6 +143,13 @@ const ProductsList = () => {
             [filterType]: value,
         }));
     };
+    useEffect(() => {
+        // Update selectedFilters when name changes
+        setSelectedFilters((prev) => ({
+            ...prev,
+            name: name,
+        }));
+    }, [name]); // Watch for changes in name
 
     useEffect(() => {
         applyFilters();
