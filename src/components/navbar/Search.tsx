@@ -8,12 +8,18 @@ const Search = () => {
     const navigate = useNavigate()
 
     const handleInput = (event) => {
+    
         setInputData(event.target.value)
     }
 
     useEffect(() => {
-        if (inputData.trim()) {
+        if (inputData.trim()=="") {
+            navigate(`/search?query=${""}`)
+        }
+        else
+        {
             navigate(`/search?query=${inputData}`)
+
         }
     }, [inputData, navigate])
 

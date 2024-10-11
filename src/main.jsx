@@ -13,6 +13,7 @@ import Product from './routes/Product'
 import ProductsList from './routes/ProductsList'
 import WomenShop from './routes/WomenShop'
 import Input from './components/navbar/Input'
+import ProfilePage from './routes/ProfilePage'
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path:"search/" ,
                 element:<Input />,
+            },
+            {
+                path:"profilePage" ,
+                element:<ProfilePage/>,
             },
 
         ],
