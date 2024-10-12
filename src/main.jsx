@@ -12,9 +12,10 @@ import Register from './routes/Register'
 import Product from './routes/Product'
 import ProductsList from './routes/ProductsList'
 import WomenShop from './routes/WomenShop'
-import Input from './routes/Search'
+import SearchPage from './routes/Search'
 import ProfilePage from './routes/ProfilePage'
 import ProductsPage from './routes/ProductsPage' // استيراد الصفحة الجديدة
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const router = createBrowserRouter([
     {
@@ -62,9 +63,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'search/',
-                element: <Input />,
-                path: 'search/',
-                element: <Input />,
+                element: <SearchPage />,
             },
             {
                 path: 'profilePage',
@@ -73,8 +72,12 @@ const router = createBrowserRouter([
         ],
     },
 ])
+const queryClient = new QueryClient()
+
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+        </QueryClientProvider>
     </StrictMode>
 )

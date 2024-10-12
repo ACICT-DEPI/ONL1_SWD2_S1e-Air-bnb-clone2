@@ -5,20 +5,21 @@ import { useParams } from 'react-router-dom'
 
 const Filters = ({
     products,
-    updateFilter,
-}: {
+}: // updateFilter,
+{
     products: {
         id: string
         name: string
         image: string
         price: number
         category: string
-        colors: string[]
-        sizes: string[]
+        color: string
+        size: string
     }[]
-    updateFilter: (filterType: string, value: any) => void
+    // updateFilter: (filterType: string, value: any) => void
 }) => {
     const { shop } = useParams()
+    console.log(products)
 
     const priceCounts = products.reduce((acc, product) => {
         acc[product.price] = (acc[product.price] || 0) + 1
@@ -26,16 +27,12 @@ const Filters = ({
     }, {})
 
     const colorCounts = products.reduce((acc, product) => {
-        product.colors.forEach((color) => {
-            acc[color] = (acc[color] || 0) + 1
-        })
+        acc[product.color] = (acc[product.color] || 0) + 1
         return acc
     }, {})
 
     const sizeCounts = products.reduce((acc, product) => {
-        product.sizes.forEach((size) => {
-            acc[size] = (acc[size] || 0) + 1
-        })
+        acc[product.size] = (acc[product.size] || 0) + 1
         return acc
     }, {})
 
@@ -48,7 +45,7 @@ const Filters = ({
         ([name, count]) => ({ name, count: Number(count), label: name })
     )
     const priceCountArray = Object.entries(priceCounts).map(
-        ([price, count]) => ({ name: Number(price), count: Number(count) })
+        ([price, count]) => ({ name: price, count: Number(count) })
     )
     const sizeCountArray = Object.entries(sizeCounts).map(([name, count]) => ({
         name,
@@ -81,21 +78,21 @@ const Filters = ({
                 key="السعر"
                 filter="price"
                 filters={priceCountArray}
-                updateFilter={updateFilter}
+                // updateFilter={updateFilter}
             />
             <FilterBy
                 FilterName="المقاس"
                 key="المقاس"
                 filter="size"
                 filters={sizeCountArray}
-                updateFilter={updateFilter}
+                // updateFilter={updateFilter}
             />
             <FilterBy
                 FilterName="اللون"
                 key="اللون"
                 filter="color"
                 filters={colorCountArray}
-                updateFilter={updateFilter}
+                // updateFilter={updateFilter}
             />
             {!shop && (
                 <FilterBy
@@ -103,7 +100,7 @@ const Filters = ({
                     key="التصنيف"
                     filter="category"
                     filters={categoryCountArray}
-                    updateFilter={updateFilter}
+                    // updateFilter={updateFilter}
                 />
             )}
         </div>

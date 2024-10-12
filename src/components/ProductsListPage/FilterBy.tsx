@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import useUrl from '../../utils/useUrl'
+import { useSearchParams } from 'react-router-dom'
 
 const FilterBy = ({
     FilterName,
     filters,
-    updateFilter,
     filter,
 }: {
     FilterName: string
     filters: {
-        name: string | number
+        name: string
         count: number
         label?: string | number
     }[]
     filter: string
-    updateFilter: (filterType: string, value: any) => void
 }) => {
+    const [, setSearchParams] = useSearchParams({})
     const [showFilter, setshowFilter] = useState(false)
     const [enableScroll, setEnableScroll] = useState(false)
     useEffect(() => {
@@ -28,6 +29,7 @@ const FilterBy = ({
             setEnableScroll(false)
         }
     }, [showFilter])
+
     return (
         <div className="relative">
             <div
@@ -65,7 +67,13 @@ const FilterBy = ({
                         <button
                             className="relative text-start px-[24px] py-[16px] hover:bg-[#f4eddd] flex items-center gap-2 w-full"
                             onClick={() => {
-                                updateFilter(filter, filterData.name)
+                                setSearchParams(
+                                    (prev) => {
+                                        prev.set(filter, filterData.name)
+                                        return prev
+                                    },
+                                    { replace: true }
+                                )
                                 setshowFilter(false)
                             }}
                         >

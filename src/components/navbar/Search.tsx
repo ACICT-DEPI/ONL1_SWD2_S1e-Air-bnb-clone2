@@ -1,22 +1,47 @@
 import React, { useState, useEffect } from 'react'
 import { SearchIcon } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useDebounce } from '../../utils/useDebounce'
 
 const Search = () => {
-    const [inputData, setInputData] = useState('')
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const [inputData, setInputData] = useState(searchParams.get('query') || '')
+    const debouncedInput = useDebounce(inputData)
+    const [hasInteracted, setHasInteracted] = useState(false)
+
     const navigate = useNavigate()
 
     const handleInput = (event) => {
         setInputData(event.target.value)
+        if (!hasInteracted) {
+            setHasInteracted(true)
+        }
     }
 
     useEffect(() => {
-        if (inputData.trim() == '') {
-            navigate(`/search?query=${''}`)
-        } else {
-            navigate(`/search?query=${inputData}`)
+        if (hasInteracted) {
+            if (debouncedInput.trim().length > 0) {
+                navigate('/search')
+                setSearchParams(
+                    (prev) => {
+                        prev.set('query', debouncedInput)
+                        return prev
+                    },
+                    { replace: true }
+                )
+            } else {
+                navigate('/search')
+                setSearchParams(
+                    (prev) => {
+                        prev.delete('query')
+                        return prev
+                    },
+                    { replace: true }
+                )
+            }
         }
-    }, [inputData, navigate])
+    }, [debouncedInput, navigate])
 
     return (
         <div className="sm:flex lg:w-1/4 sm:w-1/2 items-center justify-center lg:justify-start sm:order-2 order-3 lg:order-none w-full mt-2 border-t sm:mt-0 sm:border-t-0 border-[#c8c8c8]">
