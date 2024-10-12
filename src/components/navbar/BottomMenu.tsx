@@ -9,7 +9,8 @@ const BottomMenu = () => {
                     className="hover:border-black border-transparent border-b-2 pb-1
                 "
                 >
-                    <Link to="/women/view-all">النساء</Link>
+                    <Link to="/women">النساء</Link>
+
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
                     <Link to="/men/view-all">الرجال</Link>

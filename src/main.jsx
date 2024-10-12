@@ -14,6 +14,7 @@ import ProductsList from './routes/ProductsList'
 import WomenShop from './routes/WomenShop'
 import Input from './components/navbar/Input'
 import ProfilePage from './routes/ProfilePage'
+import ProductsPage from './routes/ProductsPage' // استيراد الصفحة الجديدة
 
 const router = createBrowserRouter([
     {
@@ -46,22 +47,27 @@ const router = createBrowserRouter([
                 element: <ProductsList />,
             },
             {
-                path: ':shop',
+                path: 'women',
                 element: <WomenShop />,
             },
+
+            {
+                path: 'products',
+                element: <ProductsPage />,
+            },
+
             {
                 path: '*',
                 element: <ErrorPage />,
             },
             {
-                path:"search/" ,
-                element:<Input />,
+                path: 'search/',
+                element: <Input />,
             },
             {
-                path:"profilePage" ,
-                element:<ProfilePage/>,
+                path: 'profilePage',
+                element: <ProfilePage />,
             },
-
         ],
     },
 ])
