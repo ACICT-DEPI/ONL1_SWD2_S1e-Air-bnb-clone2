@@ -8,8 +8,8 @@ type Filters = {
     category?: string
 }
 export const getProducts = async (filters?: Filters) => {
-    // const response = await axios('https://h-m-server.vercel.app/api/products', {
-    const response = await axios('http://localhost:8080/api/products', {
+    const response = await axios('https://h-m-server.vercel.app/api/products', {
+        // const response = await axios('http://localhost:8080/api/products', {
         params: {
             ...filters,
         },
