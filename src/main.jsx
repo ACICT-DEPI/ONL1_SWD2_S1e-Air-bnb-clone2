@@ -16,6 +16,8 @@ import SearchPage from './routes/Search'
 import ProfilePage from './routes/ProfilePage'
 import ProductsPage from './routes/ProductsPage' // استيراد الصفحة الجديدة
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Cart from './routes/Cart'
+import WishList from './routes/WishList'
 
 const router = createBrowserRouter([
     {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
             {
                 path: 'profilePage',
                 element: <ProfilePage />,
+            },
+            {
+                path: 'cart',
+                element: <Cart />,
+            },
+            {
+                path: 'wishlist',
+                element: <WishList />,
             },
         ],
     },
