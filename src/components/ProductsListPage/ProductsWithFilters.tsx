@@ -26,7 +26,6 @@ const ProductsWithFilters = () => {
                 size: size || undefined,
             }),
     })
-    console.log(data)
 
     return (
         <>
