@@ -3,7 +3,6 @@ import { MdClose } from 'react-icons/md'
 import { useParams, useSearchParams } from 'react-router-dom'
 
 const SelectedFilters = () => {
-    const { shop } = useParams()
     const [searchParams, setSearchParams] = useSearchParams()
     const price = searchParams.get('price')
     const color = searchParams.get('color')
@@ -19,13 +18,13 @@ const SelectedFilters = () => {
                 {category && (
                     <div className="flex gap-2 border px-2 py-1 items-center justify-center">
                         <span className="flex items-center justify-center text-sm">
-                            {shop === 'kids'
+                            {category === 'kids'
                                 ? 'اطفال'
-                                : shop === 'men'
+                                : category === 'men'
                                 ? 'رجال'
-                                : shop === 'women'
+                                : category === 'women'
                                 ? 'نساء'
-                                : shop}
+                                : category}
                         </span>
                         <button>
                             <MdClose

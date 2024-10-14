@@ -31,7 +31,6 @@ const Search = () => {
                     { replace: true }
                 )
             } else {
-                navigate('/search')
                 setSearchParams(
                     (prev) => {
                         prev.delete('query')
