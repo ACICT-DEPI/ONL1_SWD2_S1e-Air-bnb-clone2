@@ -29,11 +29,12 @@ const Login = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formLoginData), 
+                }
             );
     
             const result = await response.json();
     
-          
+           
             if (response.ok) {
                 localStorage.setItem('token', result.token);
                 localStorage.setItem('email', formLoginData.email);
