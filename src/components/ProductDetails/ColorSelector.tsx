@@ -1,20 +1,22 @@
+import { url } from 'inspector';
 import React from 'react'
 import { useState } from 'react';
 
-const ColorSelector = () => {
+const ColorSelector = ({colors=[]}) => {
+   
     // State to store the selected color
-    const [selectedColor, setSelectedColor] = useState('ازرق');
+    const [selectedColor, setSelectedColor] = useState('اختر لون');
 
     // Color options with corresponding Arabic names and their hex codes
-    const colors = [
-        { name: 'ازرق', value: 'blue', hex: '#2b2839' },
-        { name: 'اسود', value: 'black', hex: '#232120' },
-        { name: 'بني', value: 'brown', hex: '#260a0e' }
-    ];
+    // const colors = [
+    //     { name: 'ازرق', value: 'blue', hex: '#2b2839' },
+    //     { name: 'اسود', value: 'black', hex: '#232120' },
+    //     { name: 'بني', value: 'brown', hex: '#260a0e' }
+    // ];
 
     // Handle the color click
     const handleColorClick = (color) => {
-        setSelectedColor(color.name);
+        setSelectedColor(color.label);
     };
 
     return (
@@ -28,16 +30,16 @@ const ColorSelector = () => {
             <div className="color-thumbnails mt-3 flex gap-1">
                 {colors.map((color) => (
                     <div
-                        key={color.value}
+                        key={color.id}
                         onClick={() => handleColorClick(color)}
-                        className="color-thumbnail rounded-full cursor-pointer"
+                        className="color-thumbnail  cursor-pointer"
                         style={{
-                            backgroundColor: color.hex,
-                            width: '40px',
-                            height: '40px',
-                            border: selectedColor === color.name ? '3px solid #000' : '1px solid #ccc'
+                            width:'47px',
+                            height:'70px',
+                            border: selectedColor === color.label ? '3px solid #000' : '1px solid #ccc'
                         }}
                     >
+                        <img src={color.image} alt="" />
                     </div>
                 ))}
             </div>

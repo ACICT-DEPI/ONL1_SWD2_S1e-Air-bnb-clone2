@@ -17,9 +17,9 @@ const Share = ({ closeShare }) => {
                 </div>
 
                 <ul className='flex flex-col gap-4 mt-4'>
-                    <li className='flex flex-row items-center gap-3 hover:text-gray-700'><FaFacebookSquare />Facebook</li>
-                    <li className='flex flex-row items-center gap-3  hover:text-gray-700'><FaPinterestSquare />Pinterest</li>
-                    <li className='flex flex-row items-center gap-3  hover:text-gray-700'><RiTwitterXFill />Twitter</li>
+                    <li className='flex flex-row items-center gap-3 hover:text-gray-700 cursor-pointer'><FaFacebookSquare />Facebook</li>
+                    <li className='flex flex-row items-center gap-3  hover:text-gray-700 cursor-pointer'><FaPinterestSquare />Pinterest</li>
+                    <li className='flex flex-row items-center gap-3  hover:text-gray-700 cursor-pointer'><RiTwitterXFill />Twitter</li>
                 </ul>
             </div>
         </div>
