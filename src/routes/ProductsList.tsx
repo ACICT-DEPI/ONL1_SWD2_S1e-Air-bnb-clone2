@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from '../components/ProductsListPage/SideBar'
 import ProductsNaviagtion from '../components/ProductsListPage/ProductsNaviagtion'
 import ProductsWithFilters from '../components/ProductsListPage/ProductsWithFilters'
@@ -16,10 +16,10 @@ const ProductsList = () => {
                         {shop === 'kids'
                             ? 'الاطفال'
                             : shop === 'men'
-                            ? 'الرجال'
-                            : shop === 'women'
-                            ? 'النساء'
-                            : shop}
+                                ? 'الرجال'
+                                : shop === 'women'
+                                    ? 'النساء'
+                                    : shop}
                     </h1>
                     <ProductsWithFilters />
                 </main>
