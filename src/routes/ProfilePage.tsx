@@ -5,6 +5,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 
 
 const ProfilePage = () => {
+    const email = localStorage.getItem('email'); 
     return (
         <>
             <div className=" flex justify-between mt-20 md:w-auto w-full ">
@@ -113,11 +114,14 @@ const ProfilePage = () => {
                         </ul>
 
                     </div>
-                    <div className="w-[100%]  flex md:justify-start font-hm-sans-arabic  border-b  border-gray-300 justify-center my-6 ">
+                    <div className="w-[100%]   md:justify-start font-hm-sans-arabic  border-b  border-gray-300 justify-center my-6 ">
                         <p className="text-lg pb-1 font-light">
                             تفاصيل الحساب
                         </p>
-                    </div>
+                        </div>
+                        <p className='md:text-sm  text-lg  md:w-auto w-full font-light'>عنوان البريد الالكتروني</p>
+                        <p className='md:text-sm  text-lg  md:w-auto w-full font-light  text-neutral-500'> {email}</p>
+                
                   
                     
 
