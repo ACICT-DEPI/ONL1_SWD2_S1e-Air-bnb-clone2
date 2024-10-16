@@ -1,20 +1,25 @@
-import { Heart } from "lucide-react";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Heart } from 'lucide-react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Product = ({
     img,
     name,
     price,
+    id,
 }: {
-    img: string;
-    name: string;
-    price: number;
+    img: string
+    name: string
+    price: number
+    id: string
 }) => {
     return (
         <div className="sm:w-[280px] w-1/2 sm:h-[450px] mb-[55px] px-2 ">
             <div className="flex flex-col h-full">
-                <Link to="#" className="relative hover:scale-105 duration-200">
+                <Link
+                    to={`/product/${id}`}
+                    className="relative hover:scale-105 duration-200"
+                >
                     <img
                         src={img}
                         alt=""
@@ -31,7 +36,7 @@ const Product = ({
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Product;
+export default Product

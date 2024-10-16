@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 
 const ProductsList = () => {
     const { shop } = useParams()
+
     return (
         <div className="flex flex-col px-6">
             <ProductsNaviagtion />
@@ -16,10 +17,10 @@ const ProductsList = () => {
                         {shop === 'kids'
                             ? 'الاطفال'
                             : shop === 'men'
-                                ? 'الرجال'
-                                : shop === 'women'
-                                    ? 'النساء'
-                                    : shop}
+                            ? 'الرجال'
+                            : shop === 'women'
+                            ? 'النساء'
+                            : shop}
                     </h1>
                     <ProductsWithFilters />
                 </main>

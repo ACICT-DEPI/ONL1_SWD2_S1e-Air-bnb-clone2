@@ -8,6 +8,7 @@ const ProductsContainer = ({
         image: string
         name: string
         price: number
+        id: string
     }[]
 }) => {
     const [prdouctsNumber, setprdouctsNumber] = useState(10)
@@ -24,6 +25,7 @@ const ProductsContainer = ({
                         img={product.image}
                         name={product.name}
                         price={product.price}
+                        id={product.id}
                         key={index}
                     />
                 ))}
