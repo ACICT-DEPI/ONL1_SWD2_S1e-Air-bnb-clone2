@@ -1,56 +1,58 @@
 import { ChevronDown, CircleAlert, Package, Trash, Trash2 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { GiCargoCrane } from 'react-icons/gi'
+import useCart from '../../utils/zustand/UseCart'
 
 const CartBody = () => {
-    const [items, setitems] = useState([
-        {
-            id: 'cm24qe5be007nu6uw2wdji4uv',
-            name: 'جاكيت من مزيج الصوف بقصّة عادية',
-            image: 'https://media.alshaya.com/adobe/assets/urn:aaid:aem:5d60a779-6ff5-4f8c-b070-c4e7c80ff1b7/as/EID-7b1dc32281cfd897281c01075fd9d81a75f86c2b.jpg?width=450&height=675&preferwebp=true',
-            price: 3299,
-            category: 'men',
-            color: 'أسود',
-            size: 'XS',
-            quantity: 1,
-        },
-        {
-            id: 'cm24qf7jd00a0u6uwz8ivnbo1',
-            name: 'جاكيت من الكنفاز بقصّة عادية',
-            image: 'https://media.alshaya.com/adobe/assets/urn:aaid:aem:81da2508-d50c-4fcb-9691-bbfc15e63c6f/as/EID-f10e0fe88478af62888d8892e303c55198943afb.jpg?width=450&height=675&preferwebp=true',
-            price: 4499,
-            category: 'men',
-            color: 'أسود',
-            size: 'S',
-            quantity: 1,
-        },
-        {
-            id: 'cm24qg8ko00chu6uwv56fmkh5',
-            name: 'تي-شيرت بقصة مريحة من القطن',
-            image: 'https://media.alshaya.com/adobe/assets/urn:aaid:aem:3993b9f8-8c23-466c-ac46-8fafd5125a56/as/EID-d02899e9b8d6aa9b65172e133e0eb4b5aa0ed41a.jpg?width=450&height=675&preferwebp=true',
-            price: 799,
-            category: 'men',
-            color: 'أبيض/ أورا آرتيست هاوس',
-            size: 'XS',
-            quantity: 1,
-        },
-    ])
+    const { cart, updateCart } = useCart()
 
     const deleteItem = (id) => {
-        setitems(items.filter((item) => item.id !== id))
+        const updatedItems = cart.items.filter((item) => item.productID !== id)
+        updateCart({
+            items: updatedItems,
+            totalAmount: updatedItems.reduce(
+                (acc, item) => acc + item.amount,
+                0
+            ),
+        })
     }
     const editQuantity = (id, quantity) => {
-        setitems(
-            items.map((item) =>
-                item.id === id ? { ...item, quantity: quantity } : item
-            )
-        )
+        const ItemIndex = cart.items.findIndex((item) => item.productID === id)
+        if (ItemIndex !== -1) {
+            console.log(cart.items[ItemIndex])
+            const item = {
+                ...cart.items[ItemIndex],
+                quantity,
+                amount: cart.items[ItemIndex].price * quantity,
+            }
+
+            const updatedItems = cart.items
+            updatedItems[ItemIndex] = item
+            console.log(updatedItems[ItemIndex])
+
+            updateCart({
+                items: updatedItems,
+                totalAmount: updatedItems.reduce(
+                    (acc, item) => acc + item.amount,
+                    0
+                ),
+            })
+        }
     }
 
     return (
         <div className="lg:w-[50%] w-full flex flex-col">
             <div className="flex flex-col lg:flex-row lg:justify-between justify-center items-center  font-bold py-5 animate-slideUp relative">
-                <div className="hidden lg:block">حقيبة التسوق (قطعة 2)</div>
+                <div className="hidden lg:block">
+                    حقيبة التسوق (
+                    <span className="text-xl px-2">
+                        {cart.items.reduce(
+                            (acc, item) => acc + item.quantity,
+                            0
+                        )}
+                    </span>
+                    قطعة )
+                </div>
 
                 <div className="">التوصيل إلى: مدينة سوهاج</div>
             </div>
@@ -67,11 +69,11 @@ const CartBody = () => {
             </div>
 
             <div className="flex flex-col animate-slideUp relative my-5 mb-10">
-                {items.map((item) => (
+                {cart.items.map((item) => (
                     <CartItem
-                        key={item.id}
+                        key={item.productID}
                         item={item}
-                        index={items.indexOf(item)}
+                        index={cart.items.indexOf(item)}
                         deleteItem={deleteItem}
                         editQuantity={editQuantity}
                     />
@@ -90,8 +92,8 @@ const CartItem = ({
     editQuantity,
 }: {
     item: {
-        id: string
-        name: string
+        productID: string
+        title: string
         image: string
         price: number
         category: string
@@ -106,7 +108,7 @@ const CartItem = ({
     const [showQuantity, setshowQuantity] = useState(false)
     const [quantity, setQuantity] = useState(item.quantity)
     useEffect(() => {
-        editQuantity(item.id, quantity)
+        editQuantity(item.productID, quantity)
     }, [quantity])
 
     return (
@@ -123,12 +125,12 @@ const CartItem = ({
                     <div className="px-3 ">
                         <div className="flex flex-col text-sm">
                             <div className=" flex flex-col gap-1 lg:text-lg font-bold">
-                                <div>{item.name}</div>
+                                <div>{item.title}</div>
                                 <div>{item.price} ج.م</div>
                             </div>
                             <div className="flex  flex-col text-[#878787] py-4 gap-1 text-xs">
                                 <div className="whitespace-pre-wrap hidden lg:block">
-                                    رقم القطعة : {item.id}
+                                    رقم القطعة : {item.productID}
                                 </div>
                                 <div className="whitespace-pre-wrap">
                                     Color label: {item.color}
@@ -147,7 +149,7 @@ const CartItem = ({
             <div className="flex flex-col justify-between">
                 <button
                     className="mr-auto mb-12"
-                    onClick={() => deleteItem(item.id)}
+                    onClick={() => deleteItem(item.productID)}
                 >
                     <Trash2 className="text-gray-300 size-7 hover:text-gray-950 duration-150 " />
                 </button>

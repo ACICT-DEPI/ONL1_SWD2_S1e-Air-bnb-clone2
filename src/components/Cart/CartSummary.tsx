@@ -1,7 +1,9 @@
 import React from 'react'
 import { CreditCard, Truck, Clock, Package } from 'lucide-react'
+import useCart from '../../utils/zustand/UseCart'
 
 const CheckoutSummary: React.FC = () => {
+    const { cart } = useCart()
     return (
         <div className="lg:w-[45%] w-full mr-auto  p-6   text-right  animate-slideUp relative">
             <div className="flex  justify-between items-center mb-4">
@@ -27,12 +29,12 @@ const CheckoutSummary: React.FC = () => {
 
             <div className="flex  justify-between py-3 border-b border-b-gray-500">
                 <span>المبلغ</span>
-                <span>3,898.00 ج.م</span>
+                <span>{cart.totalAmount} ج.م</span>
             </div>
 
             <div className="flex  justify-between font-bold text-lg my-4">
                 <span>المبلغ الإجمالي للطلبية</span>
-                <span>3,898.00 ج.م</span>
+                <span>{cart.totalAmount} ج.م</span>
             </div>
 
             <div className="flex justify-between">
