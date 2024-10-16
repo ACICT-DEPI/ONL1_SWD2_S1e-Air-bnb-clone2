@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { getProducts } from '../../api/FetchProducts'
-import Filters from './Filters'
-import SelectedFilters from './SelectedFilters'
-import ProductsWithLoading from './ProductsWithLoading'
+import Filters from './filters/Filters'
+import SelectedFilters from './filters/SelectedFilters'
 import React from 'react'
+import ProductsSkeleton from './ProductsSkeleton'
+import ProductsContainer from './ProductsContainer'
 
 const ProductsWithFilters = () => {
     const params = useParams()
@@ -32,7 +33,11 @@ const ProductsWithFilters = () => {
         <>
             <Filters products={data || []} />
             {(price || color || size || category) && <SelectedFilters />}
-            <ProductsWithLoading products={data} loading={isLoading} />
+            {isLoading ? (
+                <ProductsSkeleton />
+            ) : (
+                <ProductsContainer products={data || []} />
+            )}
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import SortBy from './SortBy'
+import SortBy from '../SortBy'
 import FilterBy from './FilterBy'
 import { useParams } from 'react-router-dom'
 
