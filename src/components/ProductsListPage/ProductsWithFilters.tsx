@@ -14,22 +14,24 @@ const ProductsWithFilters = () => {
     const price = searchParams.get('price')
     const color = searchParams.get('color')
     const size = searchParams.get('size')
+    const category = searchParams.get('category')
 
     const { data, error, isLoading } = useQuery({
-        queryKey: ['products', params.shop, name, price, color, size],
+        queryKey: ['products', params.shop, name, price, color, size, category],
         queryFn: () =>
             getProducts({
                 name: name || undefined,
                 price: price || undefined,
-                category: params.shop,
+                category: params.shop ? params.shop : category || undefined,
                 color: color || undefined,
                 size: size || undefined,
             }),
     })
+
     return (
         <>
             <Filters products={data || []} />
-            {(price || color || size) && <SelectedFilters />}
+            {(price || color || size || category) && <SelectedFilters />}
             <ProductsWithLoading products={data} loading={isLoading} />
         </>
     )

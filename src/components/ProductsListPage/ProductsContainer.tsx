@@ -18,7 +18,7 @@ const ProductsContainer = ({
 
     return (
         <>
-            <div className=" flex-wrap flex justify-between md:justify-start mt-5">
+            <div className=" flex-wrap flex justify-center xl:justify-start mt-5">
                 {products.slice(0, prdouctsNumber).map((product, index) => (
                     <Product
                         img={product.image}
