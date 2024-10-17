@@ -1,57 +1,51 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate hook
-import LeftSide from "../components/LoginLeftSide";
-import Inputs from "../components/Inputs";
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom' // Import useNavigate hook
+import LeftSide from '../components/LoginLeftSide'
+import Inputs from '../components/Inputs'
 
 const Login = () => {
     const [formLoginData, setFormLoginData] = useState({
         email: '',
         password: '',
-    });
+    })
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-   
     const handleChange = (e) => {
-        setFormLoginData({ ...formLoginData, [e.target.name]: e.target.value });
-    };
+        setFormLoginData({ ...formLoginData, [e.target.name]: e.target.value })
+    }
 
-   
     const handleSubmit = async (e) => {
-        e.preventDefault();
-    
+        e.preventDefault()
+
         try {
             const response = await fetch(
-                'https://h-m-server.vercel.app/api/user/login', 
+                'https://h-m-server.vercel.app/api/user/login',
                 {
-                    method: 'POST', 
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formLoginData), 
+                    body: JSON.stringify(formLoginData),
                 }
-            );
-    
-            const result = await response.json();
-    
-           
+            )
+
+            const result = await response.json()
+
             if (response.ok) {
-                localStorage.setItem('token', result.token);
-                localStorage.setItem('email', formLoginData.email);
-                navigate("/ProfilePage"); 
+                localStorage.setItem('token', result.token)
+                localStorage.setItem('email', formLoginData.email)
+                navigate('/ProfilePage')
                 // console.log('User Logged In:', result);
             } else {
-                alert('فشل في تسجيل الدخول: ' + result.message);
             }
         } catch (err) {
-            console.error('Login Error:', err);
-            alert('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.');
+            console.error('Login Error:', err)
         }
-    };
-    
+    }
 
     return (
-        <div className="md:w-[70%] mx-auto grid grid-cols-1 pt-9 w-full px-4">
+        <div className="md:w-[70%] mx-auto grid grid-cols-1 pt-9 w-full px-4 animate-slideUp relative">
             <div className="w-[100%] flex md:justify-start font-hm-sans-arabic border-b border-gray-300 justify-center">
                 <p className="text-xl pb-3">
                     <b>تسجيل الدخول</b>
@@ -62,8 +56,14 @@ const Login = () => {
                     <p className="md:text-xl invisible md:visible">
                         <b>تسجيل الدخول عن طريق البريد الالكتروني</b>
                     </p>
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-11 lg:pl-20 pb-4">
-                        <Inputs handleChange={handleChange} data={formLoginData} />
+                    <form
+                        onSubmit={handleSubmit}
+                        className="flex flex-col gap-11 lg:pl-20 pb-4"
+                    >
+                        <Inputs
+                            handleChange={handleChange}
+                            data={formLoginData}
+                        />
                         <div className="flex md:flex-row align-middle md:gap-11 flex-col">
                             <button
                                 type="submit"
@@ -83,7 +83,7 @@ const Login = () => {
                 <LeftSide />
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Login;
+export default Login

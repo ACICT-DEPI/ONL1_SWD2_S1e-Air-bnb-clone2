@@ -24,7 +24,7 @@ const Product = () => {
 
     return (
         <>
-            <div className="product-MainContainer h-full flex flex-col lg:flex-row  mt-16  m-8 sm:flex-col">
+            <div className="product-MainContainer h-full flex flex-col lg:flex-row  mt-16  m-8 sm:flex-col animate-slideUp relative">
                 <ProductGallery
                     images={product.images}
                     description={product.description}

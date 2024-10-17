@@ -1,13 +1,13 @@
-import React from "react";
-import RecommendationList from "../components/homePage/RecommendationList";
-import Discount from "../components/homePage/Discount";
-import Cover from "../components/homePage/Cover";
-import TrendingNow from "../components/homePage/TrendingNow";
-import WeChoosed from "../components/homePage/WeChoosed";
+import React from 'react'
+import RecommendationList from '../components/homePage/RecommendationList'
+import Discount from '../components/homePage/Discount'
+import Cover from '../components/homePage/Cover'
+import TrendingNow from '../components/homePage/TrendingNow'
+import WeChoosed from '../components/homePage/WeChoosed'
 
 const HomePage = () => {
     return (
-        <div className="container overflow-hidden xl:max-w-5xl  mx-auto flex flex-col gap-4 px-5 xl:px-0">
+        <div className="container overflow-hidden xl:max-w-5xl  mx-auto flex flex-col gap-4 px-5 xl:px-0 animate-slideUp relative">
             <RecommendationList />
             <Discount />
             <Cover
@@ -45,7 +45,7 @@ const HomePage = () => {
                 linkText="تسوق الآن"
             />
         </div>
-    );
-};
+    )
+}
 
-export default HomePage;
+export default HomePage

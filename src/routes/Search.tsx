@@ -7,7 +7,7 @@ import { Check } from 'lucide-react'
 
 const SearchPage = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col animate-slideUp relative">
             <div className="w-full text-center text-2xl font-bold my-5">
                 نتائج البحث
             </div>
