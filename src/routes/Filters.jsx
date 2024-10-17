@@ -1,7 +1,7 @@
 // FiltersComponent.jsx
 
 import React from "react";
-import FilterBy from "../components/ProductsListPage/FilterBy"; // استيراد مكون FilterBy لعرض الفلاتر
+import FilterBy from "../components/ProductsListPage/filters/FilterBy"; // استيراد مكون FilterBy لعرض الفلاتر
 
 const Filters = ({ products, updateFilter }) => {
     // حساب عدد المنتجات لكل فلتر

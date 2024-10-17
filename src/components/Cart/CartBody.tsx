@@ -133,7 +133,7 @@ const CartItem = ({
                                     رقم القطعة : {item.productID}
                                 </div>
                                 <div className="whitespace-pre-wrap">
-                                    Color label: {item.color}
+                                    اللون: {item.color}
                                 </div>
                                 <div className="whitespace-pre-wrap">
                                     المقاس: {item.size}

@@ -2,19 +2,9 @@ import { url } from 'inspector';
 import React from 'react'
 import { useState } from 'react';
 
-const ColorSelector = ({colors=[]}) => {
-   
-    // State to store the selected color
-    const [selectedColor, setSelectedColor] = useState('اختر لون');
+const ColorSelector = ({ colors = [], selectedColor, setSelectedColor, defaultcolor }) => {
 
-    // Color options with corresponding Arabic names and their hex codes
-    // const colors = [
-    //     { name: 'ازرق', value: 'blue', hex: '#2b2839' },
-    //     { name: 'اسود', value: 'black', hex: '#232120' },
-    //     { name: 'بني', value: 'brown', hex: '#260a0e' }
-    // ];
-
-    // Handle the color click
+    if(!selectedColor){setSelectedColor(defaultcolor)}
     const handleColorClick = (color) => {
         setSelectedColor(color.label);
     };
@@ -32,10 +22,10 @@ const ColorSelector = ({colors=[]}) => {
                     <div
                         key={color.id}
                         onClick={() => handleColorClick(color)}
-                        className="color-thumbnail  cursor-pointer"
+                        className="color-thumbnail  cursor-pointer flex flex-wrap"
                         style={{
-                            width:'47px',
-                            height:'70px',
+                            width: '47px',
+                            height: '70px',
                             border: selectedColor === color.label ? '3px solid #000' : '1px solid #ccc'
                         }}
                     >
