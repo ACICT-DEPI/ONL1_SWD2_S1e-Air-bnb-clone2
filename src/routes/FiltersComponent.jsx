@@ -1,6 +1,6 @@
 // FiltersComponent.jsx
 import React from "react";
-import FilterBy from "../components/ProductsListPage/FilterBy";
+import FilterBy from "../components/ProductsListPage/filters/FilterBy";
 import SortBy from "../components/ProductsListPage/SortBy";
 
 const Filters = ({

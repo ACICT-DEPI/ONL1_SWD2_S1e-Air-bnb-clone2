@@ -1,17 +1,14 @@
-import React, { useState } from 'react'
+import React ,{useState} from 'react';
 import SizeGuide from './SizeGuide';
 
-
-const Sizes = () => {
-    // State to store the selected size
-    const [selectedSize, setSelectedSize] = useState('');
-
+const Sizes = ({ selectedSize, setSelectedSize ,defaultSize }) => {
     // Handle the size click
+    if(!selectedSize){setSelectedSize(defaultSize)}
     const handleSizeClick = (size) => {
-        setSelectedSize(size);
+        setSelectedSize(size);  
     };
-    const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
+    const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
     const openSizeGuide = () => {
         setIsSizeGuideOpen(true);
@@ -20,14 +17,15 @@ const Sizes = () => {
     const closeSizeGuide = () => {
         setIsSizeGuideOpen(false);
     };
+
     return (
         <div className="size mt-3">
-            <div className='flex flex-row justify-between'>
+            <div className="flex flex-row justify-between">
                 <div className="selected-size text-sm">
                     المقاس: {selectedSize ? selectedSize : 'اختر المقاس'}
                 </div>
                 <div
-                    className='text-sm text-gray-500 hover:text-black cursor-pointer '
+                    className="text-sm text-gray-500 hover:text-black cursor-pointer"
                     onClick={openSizeGuide}
                 >
                     دليل المقاسات
@@ -50,6 +48,6 @@ const Sizes = () => {
             </ul>
         </div>
     );
-}
+};
 
-export default Sizes
+export default Sizes;
