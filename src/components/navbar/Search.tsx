@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { SearchIcon } from 'lucide-react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { useDebounce } from '../../utils/useDebounce'
 
 const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams()
+    const pathname = useLocation().pathname
 
     const [inputData, setInputData] = useState(searchParams.get('query') || '')
     const debouncedInput = useDebounce(inputData)
@@ -41,6 +42,12 @@ const Search = () => {
             }
         }
     }, [debouncedInput, navigate])
+
+    useEffect(() => {
+        if (pathname !== '/search') {
+            setInputData('')
+        }
+    }, [pathname])
 
     return (
         <div className="sm:flex lg:w-1/4 sm:w-1/2 items-center justify-center lg:justify-start sm:order-2 order-3 lg:order-none w-full mt-2 border-t sm:mt-0 sm:border-t-0 border-[#c8c8c8]">

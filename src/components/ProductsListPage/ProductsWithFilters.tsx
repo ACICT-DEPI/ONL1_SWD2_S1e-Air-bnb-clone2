@@ -6,6 +6,7 @@ import SelectedFilters from './filters/SelectedFilters'
 import React from 'react'
 import ProductsSkeleton from './ProductsSkeleton'
 import ProductsContainer from './ProductsContainer'
+import Carousel from '../Carousel'
 
 const ProductsWithFilters = () => {
     const params = useParams()
@@ -29,6 +30,19 @@ const ProductsWithFilters = () => {
             }),
     })
 
+    if (data && data.length === 0) {
+        return (
+            <div className="flex items-center justify-center flex-col xl:max-w-5xl mx-auto ">
+                <div className="text-xl font-bold my-5">
+                    لم نتمكن من العثور على ما تبحث عنه
+                </div>
+                <div className="text-3xl font-bold my-5">
+                    جرب استخدام كلمات بحث أوسع أو تعرف على أفضل المنتجات لدينا
+                </div>
+                <Carousel />
+            </div>
+        )
+    }
     return (
         <>
             <Filters products={data || []} />
