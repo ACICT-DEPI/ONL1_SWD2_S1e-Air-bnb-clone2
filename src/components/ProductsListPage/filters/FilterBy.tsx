@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import useUrl from '../../utils/useUrl'
 import { useSearchParams } from 'react-router-dom'
 
 const FilterBy = ({

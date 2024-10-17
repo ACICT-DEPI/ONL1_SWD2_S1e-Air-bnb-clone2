@@ -16,82 +16,40 @@ const SelectedFilters = () => {
             </div>
             <div className="flex gap-3 flex-wrap justify-center  ">
                 {category && (
-                    <div className="flex gap-2 border px-2 py-1 items-center justify-center">
-                        <span className="flex items-center justify-center text-sm">
-                            {category === 'kids'
+                    <FilterItem
+                        FilterName={'category'}
+                        value={
+                            category === 'kids'
                                 ? 'اطفال'
                                 : category === 'men'
                                 ? 'رجال'
                                 : category === 'women'
                                 ? 'نساء'
-                                : category}
-                        </span>
-                        <button>
-                            <MdClose
-                                className="size-[18px] sm:size-[24px]"
-                                onClick={() =>
-                                    setSearchParams((prev) => {
-                                        prev.delete('category')
-                                        return prev
-                                    })
-                                }
-                            />
-                        </button>
-                    </div>
+                                : category
+                        }
+                        setSearchParams={setSearchParams}
+                    />
                 )}
                 {price && (
-                    <div className="flex gap-2 border px-2 py-1 items-center justify-center">
-                        <span className="flex items-center justify-center text-sm">
-                            {price}
-                        </span>
-                        <button>
-                            <MdClose
-                                className="size-[18px] sm:size-[24px]"
-                                onClick={() =>
-                                    setSearchParams((prev) => {
-                                        prev.delete('price')
-                                        return prev
-                                    })
-                                }
-                            />
-                        </button>
-                    </div>
+                    <FilterItem
+                        FilterName={'price'}
+                        value={price}
+                        setSearchParams={setSearchParams}
+                    />
                 )}
                 {color && (
-                    <div className="flex gap-2 border px-2 py-1 items-center justify-center">
-                        <span className="flex items-center justify-center text-sm">
-                            {color}
-                        </span>
-                        <button>
-                            <MdClose
-                                className="size-[18px] sm:size-[24px]"
-                                onClick={() =>
-                                    setSearchParams((prev) => {
-                                        prev.delete('color')
-                                        return prev
-                                    })
-                                }
-                            />
-                        </button>
-                    </div>
+                    <FilterItem
+                        FilterName={'color'}
+                        value={color}
+                        setSearchParams={setSearchParams}
+                    />
                 )}
                 {size && (
-                    <div className="flex gap-2 border px-2 py-1 items-center justify-center">
-                        <span className="flex items-center justify-center text-sm">
-                            {size}
-                        </span>
-                        <button>
-                            <MdClose
-                                className="size-[18px] sm:size-[24px]"
-                                onClick={() =>
-                                    setSearchParams((prev) => {
-                                        prev.delete('size')
-                                        return prev
-                                    })
-                                }
-                            />
-                        </button>
-                    </div>
+                    <FilterItem
+                        FilterName={'size'}
+                        value={size}
+                        setSearchParams={setSearchParams}
+                    />
                 )}
             </div>
         </div>
@@ -99,3 +57,24 @@ const SelectedFilters = () => {
 }
 
 export default SelectedFilters
+
+const FilterItem = ({ value, FilterName, setSearchParams }) => {
+    return (
+        <div className="flex   h-[32px]  items-center justify-center">
+            <span className="flex items-center justify-center px-4 text-sm font-light bg-white h-full">
+                {value}
+            </span>
+            <button
+                className="h-full bg-[#f9f1ef]  px-2"
+                onClick={() =>
+                    setSearchParams((prev) => {
+                        prev.delete(FilterName)
+                        return prev
+                    })
+                }
+            >
+                <MdClose className="size-[18px] sm:size-[24px] font-thin opacity-70" />
+            </button>
+        </div>
+    )
+}

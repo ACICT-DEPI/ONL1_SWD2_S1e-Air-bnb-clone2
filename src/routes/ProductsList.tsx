@@ -28,7 +28,7 @@ const ProductsList = () => {
             }),
     })
     return (
-        <div className="flex flex-col px-6">
+        <div className="flex flex-col px-6 animate-slideUp relative">
             <ProductsNaviagtion />
             <div className="flex justify-between mt-5">
                 <SideBar />

@@ -10,13 +10,12 @@ const Register = () => {
         password: '',
     })
 
-   
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault() 
+        e.preventDefault()
 
         try {
             const response = await fetch(
@@ -32,7 +31,6 @@ const Register = () => {
 
             const result = await response.json()
 
-           
             if (response.ok) {
                 localStorage.setItem('token', result.token)
                 alert('تم إنشاء الحساب بنجاح!')
@@ -47,7 +45,7 @@ const Register = () => {
     }
 
     return (
-        <div className="md:w-[70%] mx-auto grid grid-cols-1 pt-9 w-full px-4">
+        <div className="md:w-[70%] mx-auto grid grid-cols-1 pt-9 w-full px-4 animate-slideUp relative">
             <div className="w-[100%] flex md:justify-start font-hm-sans-arabic border-b border-gray-300 justify-center">
                 <p className="text-xl pb-3">
                     <b>انشاء حساب جديد</b>
@@ -59,12 +57,10 @@ const Register = () => {
                         <b>سجل الدخول عن طريق البريد الالكتروني</b>
                     </p>
 
-                 
                     <form
                         className="flex flex-col gap-11 lg:pl-20 pb-4"
                         onSubmit={handleSubmit}
                     >
-                        
                         <div className="w-[100%] border-b border-black pb-2 relative">
                             <input
                                 type="text"
@@ -83,7 +79,6 @@ const Register = () => {
                         </div>
                         <Inputs handleChange={handleChange} data={formData} />
 
-                     
                         <div className="flex flex-col gap-2 w-full lg:justify-items-start justify-items-center items-center lg:items-start">
                             <ReCAPTCHA sitekey="6LdHf1kqAAAAAIn60o8LzP1KtOgsA07k1gvo00Vd" />
                             <div className="flex gap-1 items-center lg:items-start justify-items-center">
@@ -98,7 +93,6 @@ const Register = () => {
                             </p>
                         </div>
 
-                      
                         <div className="flex md:flex-row align-middle md:gap-11 flex-col w-full">
                             <button
                                 type="submit"
