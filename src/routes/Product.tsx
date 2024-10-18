@@ -35,7 +35,7 @@ const Product = () => {
     if (error) {
         return (
             <div className="flex items-center justify-center h-full">
-                <p className="text-red-500">{error}</p> {/* Display error message */}
+                <p className="text-red-500">{error}</p> 
             </div>
         );
     }
@@ -53,6 +53,8 @@ const Product = () => {
                 <ProductGallery
                     images={product.images}
                     description={product.description}
+                    id={product.id}
+
                 />
                 <SideBar
                     title={product.title}

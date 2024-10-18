@@ -32,13 +32,13 @@ const Sizes = ({ selectedSize, setSelectedSize ,defaultSize }) => {
                 </div>
             </div>
             {isSizeGuideOpen && <SizeGuide closeSizeGuide={closeSizeGuide} />}
-            {/* List of sizes */}
+            
             <ul className="flex flex-row mt-4 gap-3">
                 {['XXS', 'XS', 'S', 'M', 'L', 'XL'].map((size) => (
                     <li key={size}>
                         <span
                             onClick={() => handleSizeClick(size)}
-                            className={`border border-black p-1 px-4 cursor-pointer transition-all ${selectedSize === size ? 'bg-black text-white' : ''
+                            className={`border border-black p-2 px-4 cursor-pointer transition-all ${selectedSize === size ? 'bg-black text-white' : ''
                                 } hover:bg-gray-600 hover:text-white`}
                         >
                             {size}
