@@ -1,15 +1,17 @@
-const Inputs = ({ handleChange, data }) => {
+const Inputs = ({ handleChange, data,emailError ,passwordError}) => {
+    
     return (
         <>
             <div className=" border-b border-black pb-2 relative w-full">
                 <input
                     type="text"
                     name="email"
-                    id=""
+                    id="email"
                     placeholder=" "
                     className="outline-none bg-transparent w-full z-50  relative peer"
                     onChange={handleChange}
                     value={data.email}
+                    required
                 />
                 <label
                     htmlFor="email"
@@ -17,16 +19,20 @@ const Inputs = ({ handleChange, data }) => {
                 >
                     البريد الالكتروني
                 </label>
+                 {emailError && <span className="text-red-600 m-0 p-0 text-sm">{emailError}</span>} {/* عرض الخطأ إن وجد */}
+
             </div>
+           
             <div className="w-full border-b border-black pb-2 relative">
                 <input
                     type="password"
                     name="password"
-                    id=""
+                    id="password"
                     placeholder=" "
                     className="outline-none bg-transparent w-full z-50  relative peer"
                     onChange={handleChange}
                     value={data.password}
+                    required
                 />
                 <label
                     htmlFor="password"
@@ -34,9 +40,15 @@ const Inputs = ({ handleChange, data }) => {
                 >
                     كلمة السر
                 </label>
+                {passwordError && <span className="text-red-600 m-0 p-0 text-sm">{passwordError}</span>} {/* عرض الخطأ إن وجد */}
+
+
             </div>
         </>
     )
 }
 
 export default Inputs
+
+
+
