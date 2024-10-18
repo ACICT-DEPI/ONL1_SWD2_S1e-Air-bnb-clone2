@@ -11,11 +11,13 @@ import Toast from "./Toast";
 const SideBar = (props) => {
     const addToCart = useCart((state) => state.addToCart)
 
-    const [visits, setVisits] = useState(0);
+    const [visits, setVisits] = useState(Math.floor(Math.random() * (30 - 5 + 1)) + 5);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColor, setSelectedColor] = useState("");
     const [toastMessage, setToastMessage] = useState('');
+    const { cart, updateCart } = useCart()
+
     useEffect(() => {
         const getRandomVisits = () => Math.floor(Math.random() * (30 - 5 + 1)) + 5;
 
@@ -36,22 +38,35 @@ const SideBar = (props) => {
         setIsShareOpen(false);
     };
     const handleAddToCart = () => {
-        const product = {
-            productID: props.id,
-            title: props.title,
-            image: props.image[0],
-            price: props.price,
-            category: props.category,
-            color: selectedColor,
-            size: selectedSize,
-            quantity: 1,
-            amount: props.price,
-        };
-        addToCart(product);
-        setToastMessage('Item added to cart');
-        setTimeout(() => {
-            setToastMessage('');
-        }, 3000);
+        // Check if the product is already in the cart
+        const existingProduct = cart.items.find(
+            (item) => item.productID === props.id && item.color === selectedColor && item.size === selectedSize
+        );
+    
+        if (existingProduct) {
+            setToastMessage('القطعة موجودة بالفعل في الحقيبة!');
+            setTimeout(() => {
+                setToastMessage('');
+            }, 3000);
+        } else {
+            // If the product is not in the cart, add it
+            const product = {
+                productID: props.id,
+                title: props.title,
+                image: props.image[0],
+                price: props.price,
+                category: props.category,
+                color: selectedColor,
+                size: selectedSize,
+                quantity: 1,
+                amount: props.price,
+            };
+            addToCart(product);
+            setToastMessage('تم إضافة القطعة الى الحقيبة !');
+            setTimeout(() => {
+                setToastMessage('');
+            }, 3000);
+        }
     };
     return (
         <>
