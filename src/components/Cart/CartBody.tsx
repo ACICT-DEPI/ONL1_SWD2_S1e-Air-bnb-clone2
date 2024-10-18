@@ -54,7 +54,7 @@ const CartBody = () => {
                     قطعة )
                 </div>
 
-                <div className="">التوصيل إلى: مدينة سوهاج</div>
+                <div className="">التوصيل إلى: القاهرة</div>
             </div>
             <div className="relative   bg-[#efe4ce] py-5 flex items-center justify-center lg:justify-start">
                 <div className="flex items-center justify-center px-2">
