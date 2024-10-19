@@ -8,25 +8,6 @@ import { getProducts } from '../api/FetchProducts'
 
 const ProductsList = () => {
     const { shop } = useParams()
-
-    const [searchParams] = useSearchParams()
-    const name = searchParams.get('query')
-    const price = searchParams.get('price')
-    const color = searchParams.get('color')
-    const size = searchParams.get('size')
-    const category = searchParams.get('category')
-
-    const { data, error, isLoading } = useQuery({
-        queryKey: ['products', shop, name, price, color, size, category],
-        queryFn: () =>
-            getProducts({
-                name: name || undefined,
-                price: price || undefined,
-                category: shop ? shop : category || undefined,
-                color: color || undefined,
-                size: size || undefined,
-            }),
-    })
     return (
         <div className="flex flex-col px-6 animate-slideUp relative">
             <ProductsNaviagtion />

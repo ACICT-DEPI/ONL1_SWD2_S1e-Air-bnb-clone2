@@ -6,6 +6,7 @@ type Filters = {
     color?: string
     size?: string
     category?: string
+    count?: number
 }
 export const getProducts = async (filters?: Filters) => {
     const response = await axios('https://h-m-server.vercel.app/api/products', {
@@ -35,6 +36,8 @@ export const getProducts = async (filters?: Filters) => {
             size: product.size,
         }
     })
+
+    console.log(products)
 
     return products
 }

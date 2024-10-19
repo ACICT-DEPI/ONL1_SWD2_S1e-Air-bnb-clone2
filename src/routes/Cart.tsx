@@ -8,24 +8,6 @@ import Carousel from '../components/Carousel'
 const Cart = () => {
     const { cart, updateCart } = useCart()
 
-    // useEffect(() => {
-    //     const items = cart.items
-    //     items.push({
-    //         productID: 'cm24qg8ko00chu6uwv56fmkh5',
-    //         title: 'تي-شيرت بقصة مريحة من القطن',
-    //         image: 'https://media.alshaya.com/adobe/assets/urn:aaid:aem:3993b9f8-8c23-466c-ac46-8fafd5125a56/as/EID-d02899e9b8d6aa9b65172e133e0eb4b5aa0ed41a.jpg?width=450&height=675&preferwebp=true',
-    //         price: 799,
-    //         category: 'men',
-    //         color: 'أبيض/ أورا آرتيست هاوس',
-    //         size: 'XS',
-    //         quantity: 1,
-    //         amount: 799,
-    //     })
-    //     updateCart({
-    //         items,
-    //         totalAmount: cart.items.reduce((acc, item) => acc + item.amount, 0),
-    //     })
-    // }, [])
     const isCartEmpty = cart.items.length === 0
 
     return (
@@ -68,11 +50,11 @@ const Cart = () => {
                         ? 'إليك بعض منتجاتنا المفضلة'
                         : 'منتجات شاهدتها مؤخراً'}
                 </div>
-                <Carousel />
+                <Carousel category="women" />
                 <div className="text-2xl font-bold text-center my-6">
                     منتجات شاهدها الزبائن
                 </div>
-                <Carousel />
+                <Carousel category="men" />
             </div>
         </div>
     )

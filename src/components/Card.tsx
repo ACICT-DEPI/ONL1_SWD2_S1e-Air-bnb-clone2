@@ -1,13 +1,16 @@
-import React from "react";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Card = ({
     name,
     image,
     price,
+    id,
 }: {
-    name: string;
-    image: string;
-    price: number;
+    name: string
+    image: string
+    price: number
+    id: string
 }) => {
     return (
         <div className="min-w-[245px] h-[411px] px-2">
@@ -16,9 +19,9 @@ const Card = ({
                     href="#
                 "
                 >
-                    <div className="w-full">
+                    <Link to={`/product/${id}`} className="w-full">
                         <img src={image} alt="" />
-                    </div>
+                    </Link>
                 </a>
                 <div className="flex flex-col text-sm mt-auto">
                     <p>{name}</p>
@@ -26,7 +29,7 @@ const Card = ({
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Card;
+export default Card
