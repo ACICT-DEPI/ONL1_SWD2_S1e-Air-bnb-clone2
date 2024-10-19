@@ -9,23 +9,23 @@ const Login = () => {
         password: '',
     })
 
-    const [emailError, setEmailError] = useState('') // رسالة خطأ البريد
-    const [passwordError, setPasswordError] = useState('') // رسالة خطأ كلمة المرور
+    const [emailError, setEmailError] = useState('') 
+    const [passwordError, setPasswordError] = useState('') 
 
-    // نمط التحقق من صحة البريد الإلكتروني
+    
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-    // نمط التحقق من كلمة المرور (8 أحرف، تحتوي على حرف كبير وصغير ورقم)
+    
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
 
     const navigate = useNavigate()
 
-    // تحديث الحقول وإزالة الأخطاء إذا كانت المدخلات صحيحة
+
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormLoginData({ ...formLoginData, [name]: value })
 
-        // إزالة الأخطاء أثناء الكتابة إذا كانت المدخلات صحيحة
+    
         if (name === 'email' && emailPattern.test(value)) {
             setEmailError('')
         }
@@ -39,7 +39,7 @@ const Login = () => {
         let validEmail = true
         let validPassword = true
 
-        // تحقق من صحة البريد الإلكتروني
+        
         if (!emailPattern.test(formLoginData.email)) {
             setEmailError(
                 'الرجاء إدخال بريد إلكتروني صالح (مثل: example@gmail.com).'
@@ -49,17 +49,17 @@ const Login = () => {
             setEmailError('') // مسح رسالة الخطأ إذا كان البريد صحيحًا
         }
 
-        // تحقق من صحة كلمة المرور
+        
         if (!passwordPattern.test(formLoginData.password)) {
             setPasswordError(
                 'يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، تشمل حرفًا كبيرًا، حرفًا صغيرًا، ورقمًا.'
             )
             validPassword = false
         } else {
-            setPasswordError('') // مسح رسالة الخطأ إذا كانت كلمة المرور صحيحة
+            setPasswordError('') 
         }
 
-        // إرسال النموذج إذا كانت المدخلات صحيحة
+        
         if (validEmail && validPassword) {
             try {
                 const response = await fetch(

@@ -11,17 +11,15 @@ const Register = () => {
         password: '',
     })
 
-    const [nameError, setNameError] = useState('') // رسالة خطأ الاسم
-    const [emailError, setEmailError] = useState('') // رسالة خطأ البريد
-    const [passwordError, setPasswordError] = useState('') // رسالة خطأ كلمة المرور
+    const [nameError, setNameError] = useState('') 
+    const [emailError, setEmailError] = useState('') 
+    const [passwordError, setPasswordError] = useState('') 
 
-    // نمط التحقق من صحة الاسم (يجب أن يكون الاسم 3 أحرف على الأقل)
+    
     const namePattern = /^[a-zA-Z\u0621-\u064A ]{3,}$/
 
-    // نمط التحقق من صحة البريد الإلكتروني
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-    // نمط التحقق من كلمة المرور (8 أحرف، تحتوي على حرف كبير وصغير ورقم)
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
     const navigate = useNavigate()
 
@@ -29,7 +27,7 @@ const Register = () => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
 
-        // إزالة الأخطاء أثناء الكتابة إذا كانت المدخلات صحيحة
+        
         if (name === 'name' && namePattern.test(value)) {
             setNameError('')
         }
@@ -45,7 +43,7 @@ const Register = () => {
         e.preventDefault()
         let valid = true
 
-        // تحقق من صحة الاسم
+    
         if (!namePattern.test(formData.name)) {
             setNameError('يجب أن يحتوي الاسم على 3 أحرف على الأقل.')
             valid = false
@@ -53,7 +51,7 @@ const Register = () => {
             setNameError('')
         }
 
-        // تحقق من صحة البريد الإلكتروني
+    
         if (!emailPattern.test(formData.email)) {
             setEmailError(
                 'الرجاء إدخال بريد إلكتروني صالح (مثل: example@gmail.com).'
@@ -63,7 +61,6 @@ const Register = () => {
             setEmailError('')
         }
 
-        // تحقق من صحة كلمة المرور
         if (!passwordPattern.test(formData.password)) {
             setPasswordError(
                 'يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، تشمل حرفًا كبيرًا، حرفًا صغيرًا، ورقمًا.'

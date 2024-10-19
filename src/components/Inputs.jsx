@@ -19,7 +19,7 @@ const Inputs = ({ handleChange, data,emailError ,passwordError}) => {
                 >
                     البريد الالكتروني
                 </label>
-                 {emailError && <span className="text-red-600 m-0 p-0 text-sm">{emailError}</span>} {/* عرض الخطأ إن وجد */}
+                 {emailError && <span className="text-red-600 m-0 p-0 text-sm">{emailError}</span>} 
 
             </div>
            
@@ -40,7 +40,7 @@ const Inputs = ({ handleChange, data,emailError ,passwordError}) => {
                 >
                     كلمة السر
                 </label>
-                {passwordError && <span className="text-red-600 m-0 p-0 text-sm">{passwordError}</span>} {/* عرض الخطأ إن وجد */}
+                {passwordError && <span className="text-red-600 m-0 p-0 text-sm">{passwordError}</span>} 
 
 
             </div>
