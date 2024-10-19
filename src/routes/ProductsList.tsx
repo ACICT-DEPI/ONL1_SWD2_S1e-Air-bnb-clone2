@@ -21,6 +21,12 @@ const ProductsList = () => {
                             ? 'الرجال'
                             : shop === 'women'
                             ? 'النساء'
+                            : shop === 'baby'
+                            ? 'الرضع'
+                            : shop === 'sports'
+                            ? 'الملابس الرياضية'
+                            : shop === 'home'
+                            ? 'هوم'
                             : shop}
                     </h1>
                     <ProductsWithFilters />

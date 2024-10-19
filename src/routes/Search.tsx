@@ -56,13 +56,22 @@ const ByCategory = () => {
     )
     categoryCountArray.forEach((category) => {
         if (category.name === 'kids') {
-            category.label = 'اطفال'
+            category.label = 'الاطفال'
         }
         if (category.name === 'women') {
-            category.label = 'نساء'
+            category.label = 'النساء'
         }
         if (category.name === 'men') {
-            category.label = 'رجال'
+            category.label = 'الرجال'
+        }
+        if (category.name === 'baby') {
+            category.label = 'الرضع'
+        }
+        if (category.name === 'home') {
+            category.label = 'اتش اند ام هوم'
+        }
+        if (category.name === 'sports') {
+            category.label = 'الملابس الرياضية'
         }
     })
     if (data && data.length === 0) {

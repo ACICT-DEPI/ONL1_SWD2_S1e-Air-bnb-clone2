@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const BottomMenu = () => {
     return (
@@ -10,29 +10,25 @@ const BottomMenu = () => {
                 "
                 >
                     <Link to="/women">النساء</Link>
-
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
                     <Link to="/men/view-all">الرجال</Link>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/boys/view-all">الرضع</Link>
+                    <Link to="/baby/view-all">الرضع</Link>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
                     <Link to="/kids/view-all">الاطفال</Link>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/home-decor/view-all">اتش اند ام هوم</Link>
+                    <Link to="/home/view-all">اتش اند ام هوم</Link>
                 </li>
                 <li className="hover:border-black border-transparent border-b-2">
                     <Link to="/sports/view-all">الملابس الرياضية</Link>
                 </li>
-                <li className="hover:border-black border-transparent border-b-2">
-                    <Link to="/discounts/view-all">التنزيلات</Link>
-                </li>
             </ul>
         </div>
-    );
-};
+    )
+}
 
-export default BottomMenu;
+export default BottomMenu

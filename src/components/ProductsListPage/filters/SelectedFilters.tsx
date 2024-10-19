@@ -20,11 +20,17 @@ const SelectedFilters = () => {
                         FilterName={'category'}
                         value={
                             category === 'kids'
-                                ? 'اطفال'
+                                ? 'الاطفال'
                                 : category === 'men'
-                                ? 'رجال'
+                                ? 'الرجال'
                                 : category === 'women'
-                                ? 'نساء'
+                                ? 'النساء'
+                                : category === 'baby'
+                                ? 'الرضع'
+                                : category === 'sports'
+                                ? 'الملابس الرياضية'
+                                : category === 'home'
+                                ? 'اتش آند ام هوم'
                                 : category
                         }
                         setSearchParams={setSearchParams}
