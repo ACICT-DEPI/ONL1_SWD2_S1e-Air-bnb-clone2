@@ -9,38 +9,83 @@ const Login = () => {
         password: '',
     })
 
+    const [emailError, setEmailError] = useState('') // رسالة خطأ البريد
+    const [passwordError, setPasswordError] = useState('') // رسالة خطأ كلمة المرور
+
+    // نمط التحقق من صحة البريد الإلكتروني
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+    // نمط التحقق من كلمة المرور (8 أحرف، تحتوي على حرف كبير وصغير ورقم)
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
+
     const navigate = useNavigate()
 
+    // تحديث الحقول وإزالة الأخطاء إذا كانت المدخلات صحيحة
     const handleChange = (e) => {
-        setFormLoginData({ ...formLoginData, [e.target.name]: e.target.value })
+        const { name, value } = e.target
+        setFormLoginData({ ...formLoginData, [name]: value })
+
+        // إزالة الأخطاء أثناء الكتابة إذا كانت المدخلات صحيحة
+        if (name === 'email' && emailPattern.test(value)) {
+            setEmailError('')
+        }
+        if (name === 'password' && passwordPattern.test(value)) {
+            setPasswordError('')
+        }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        let validEmail = true
+        let validPassword = true
 
-        try {
-            const response = await fetch(
-                'https://h-m-server.vercel.app/api/user/login',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formLoginData),
-                }
+        // تحقق من صحة البريد الإلكتروني
+        if (!emailPattern.test(formLoginData.email)) {
+            setEmailError(
+                'الرجاء إدخال بريد إلكتروني صالح (مثل: example@gmail.com).'
             )
+            validEmail = false
+        } else {
+            setEmailError('') // مسح رسالة الخطأ إذا كان البريد صحيحًا
+        }
 
-            const result = await response.json()
+        // تحقق من صحة كلمة المرور
+        if (!passwordPattern.test(formLoginData.password)) {
+            setPasswordError(
+                'يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، تشمل حرفًا كبيرًا، حرفًا صغيرًا، ورقمًا.'
+            )
+            validPassword = false
+        } else {
+            setPasswordError('') // مسح رسالة الخطأ إذا كانت كلمة المرور صحيحة
+        }
 
-            if (response.ok) {
-                localStorage.setItem('token', result.token)
-                localStorage.setItem('email', formLoginData.email)
-                navigate('/ProfilePage')
-                // console.log('User Logged In:', result);
-            } else {
+        // إرسال النموذج إذا كانت المدخلات صحيحة
+        if (validEmail && validPassword) {
+            try {
+                const response = await fetch(
+                    'https://h-m-server.vercel.app/api/user/login',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formLoginData),
+                    }
+                )
+
+                const result = await response.json()
+
+                if (response.ok) {
+                    localStorage.setItem('token', result.token)
+                    localStorage.setItem('email', formLoginData.email)
+                    navigate('/ProfilePage')
+                } else {
+                    console.log('فشل في تسجيل الدخول: ' + result.message)
+                }
+            } catch (err) {
+                console.error('Login Error:', err)
+                console.log('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.')
             }
-        } catch (err) {
-            console.error('Login Error:', err)
         }
     }
 
@@ -63,6 +108,8 @@ const Login = () => {
                         <Inputs
                             handleChange={handleChange}
                             data={formLoginData}
+                            passwordError={passwordError}
+                            emailError={emailError}
                         />
                         <div className="flex md:flex-row align-middle md:gap-11 flex-col">
                             <button
