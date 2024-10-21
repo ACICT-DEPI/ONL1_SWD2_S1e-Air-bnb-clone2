@@ -1,9 +1,41 @@
 import React from 'react'
 import { CreditCard, Truck, Clock, Package } from 'lucide-react'
 import useCart from '../../utils/zustand/UseCart'
+import axios from 'axios'
 
 const CheckoutSummary: React.FC = () => {
-    const { cart } = useCart()
+    const { cart, updateCart } = useCart()
+    const saveOrder = async () => {
+        try {
+            const token = localStorage.getItem('token')
+
+            const response = await axios.post(
+                'http://localhost:8080/api/user/add-order',
+                {
+                    order: {
+                        items: cart.items.map((item) => ({
+                            productId: item.productID,
+                            quantity: item.quantity,
+                        })),
+                        amount: cart.totalAmount,
+                    },
+                },
+                {
+                    headers: {
+                        authorization: 'Bearer ' + token,
+                    },
+                }
+            )
+            if (response.status === 200) {
+                console.log('Order saved successfully')
+                updateCart({ items: [], totalAmount: 0 })
+            } else {
+                console.log('Failed to save order')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div className="lg:w-[45%] w-full mr-auto  p-6   text-right  animate-slideUp relative">
             <div className="flex  justify-between items-center mb-4">
@@ -44,7 +76,10 @@ const CheckoutSummary: React.FC = () => {
                 </p>
             </div>
 
-            <button className="w-full bg-black text-white py-3  mb-4">
+            <button
+                className="w-full bg-black text-white py-3  mb-4"
+                onClick={saveOrder}
+            >
                 إتمام الشراء بأمان
             </button>
 

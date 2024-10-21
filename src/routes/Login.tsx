@@ -9,23 +9,19 @@ const Login = () => {
         password: '',
     })
 
-    const [emailError, setEmailError] = useState('') 
-    const [passwordError, setPasswordError] = useState('') 
+    const [emailError, setEmailError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
 
-    
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-    
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
 
     const navigate = useNavigate()
-
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormLoginData({ ...formLoginData, [name]: value })
 
-    
         if (name === 'email' && emailPattern.test(value)) {
             setEmailError('')
         }
@@ -39,7 +35,6 @@ const Login = () => {
         let validEmail = true
         let validPassword = true
 
-        
         if (!emailPattern.test(formLoginData.email)) {
             setEmailError(
                 'الرجاء إدخال بريد إلكتروني صالح (مثل: example@gmail.com).'
@@ -49,21 +44,20 @@ const Login = () => {
             setEmailError('') // مسح رسالة الخطأ إذا كان البريد صحيحًا
         }
 
-        
         if (!passwordPattern.test(formLoginData.password)) {
             setPasswordError(
                 'يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، تشمل حرفًا كبيرًا، حرفًا صغيرًا، ورقمًا.'
             )
             validPassword = false
         } else {
-            setPasswordError('') 
+            setPasswordError('')
         }
 
-        
         if (validEmail && validPassword) {
             try {
                 const response = await fetch(
-                    'https://h-m-server.vercel.app/api/user/login',
+                    // 'https://h-m-server.vercel.app/api/user/login',
+                    'http://localhost:8080/api/user/login',
                     {
                         method: 'POST',
                         headers: {
@@ -74,11 +68,14 @@ const Login = () => {
                 )
 
                 const result = await response.json()
+                console.log(result)
 
                 if (response.ok) {
+                    console.log(result.token)
                     localStorage.setItem('token', result.token)
                     localStorage.setItem('email', formLoginData.email)
-                    navigate('/ProfilePage')
+                    localStorage.setItem('user', JSON.stringify(result.data))
+                    document.location.assign('/ProfilePage')
                 } else {
                     console.log('فشل في تسجيل الدخول: ' + result.message)
                 }

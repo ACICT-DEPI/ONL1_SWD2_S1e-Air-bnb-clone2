@@ -1,10 +1,32 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 
 const ProfilePage = () => {
     const email = localStorage.getItem('email')
+    const GetOrders = async () => {
+        try {
+            const response = await axios.get(
+                'http://localhost:8080/api/user/orders',
+                {
+                    headers: {
+                        authorization:
+                            'Bearer ' + localStorage.getItem('token'),
+                    },
+                }
+            )
+
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        GetOrders()
+    }, [])
+
     return (
         <>
             <div className=" flex justify-between mt-20 md:w-auto w-full animate-slideUp relative">
