@@ -10,7 +10,7 @@ const CheckoutSummary: React.FC = () => {
             const token = localStorage.getItem('token')
 
             const response = await axios.post(
-                'http://localhost:8080/api/user/add-order',
+                'https://h-m-server.vercel.app/api/user/add-order',
                 {
                     order: {
                         items: cart.items.map((item) => ({
