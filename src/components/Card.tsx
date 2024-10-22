@@ -5,11 +5,11 @@ const Card = ({
     image,
     price,
 }: {
-    name: string;
-    image: string;
-    price: number;
+  name: string;
+  image: string;
+  price: number;
 }) => {
-    return (
+  return (
         <div className="min-w-[245px] h-[411px] px-2">
             <div className="flex flex-col h-full">
                 <a
@@ -25,8 +25,8 @@ const Card = ({
                     <p>{`${price.toFixed(2)} ج.م`}</p>
                 </div>
             </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Card;

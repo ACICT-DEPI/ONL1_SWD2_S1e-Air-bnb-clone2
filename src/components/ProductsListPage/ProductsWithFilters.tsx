@@ -8,10 +8,10 @@ import ProductsSkeleton from './ProductsSkeleton'
 import ProductsContainer from './ProductsContainer'
 import Carousel from '../Carousel'
 
-const ProductsWithFilters = () => {
+const ProductsWithFilters = ({ activeCategory }: { activeCategory: string }) => {
     const params = useParams()
-
     const [searchParams] = useSearchParams()
+
     const name = searchParams.get('query')
     const price = searchParams.get('price')
     const color = searchParams.get('color')
@@ -24,7 +24,7 @@ const ProductsWithFilters = () => {
             getProducts({
                 name: name || undefined,
                 price: price || undefined,
-                category: params.shop ? params.shop : category || undefined,
+                category: params.shop ? params.shop : category || activeCategory || undefined,
                 color: color || undefined,
                 size: size || undefined,
             }),
@@ -43,6 +43,7 @@ const ProductsWithFilters = () => {
             </div>
         )
     }
+    
     return (
         <>
             <Filters products={data || []} />
