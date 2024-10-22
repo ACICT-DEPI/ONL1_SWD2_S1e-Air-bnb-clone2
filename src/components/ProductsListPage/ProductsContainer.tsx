@@ -1,13 +1,14 @@
 // src/components/ProductsListPage/ProductsContainer.tsx
+
 import React, { useState } from 'react';
 import Product from './ProductCard';
-import { WishlistItem } from '../../routes/WishListContext'; // Adjust the path as necessary
+import { WishlistItem } from '../../routes/WishListContext';
 
 const ProductsContainer = ({
   products,
   onAddToCart,
 }: {
-  products: WishlistItem[]; // Make sure this matches the WishlistItem type
+  products: WishlistItem[];
   onAddToCart: (id: string) => void;
 }) => {
   const [productsNumber, setProductsNumber] = useState(10);

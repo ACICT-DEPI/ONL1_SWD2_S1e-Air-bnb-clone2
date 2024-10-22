@@ -1,4 +1,4 @@
-// src/routes/WishList.tsx
+
 import React from 'react';
 import { useWishlist } from './WishListContext';
 import ProductsContainer from '../components/ProductsListPage/ProductsContainer';

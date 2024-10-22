@@ -4,7 +4,7 @@ import Discount from '../components/homePage/Discount';
 import SideLists from './SideListsComponent';
 import { FaHeart, FaRegHeart } from 'react-icons/fa'; // استيراد أيقونات القلب
 
-// تعريف نوع المنتج
+
 type Product = {
   id: string;
   name: string;
@@ -64,7 +64,7 @@ const CategoryShop: React.FC<CategoryShopProps> = ({
     fetchProducts();
   }, [category]);
 
-  // دالة لإضافة أو إزالة المنتجات من قائمة التمنيات
+  
   const toggleWishList = (id: string) => {
     setWishList((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
