@@ -12,7 +12,9 @@ const SearchPage = () => {
                 نتائج البحث
             </div>
             <div className="flex">
-                <ByCategory />
+                <div className="hidden sm:block">
+                    <ByCategory />
+                </div>
                 <div>
                     <ProductsWithFilters />
                 </div>
