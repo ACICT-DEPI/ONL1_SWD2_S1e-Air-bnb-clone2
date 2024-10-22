@@ -25,7 +25,7 @@ const WomenShop: React.FC = () => {
                 'تقدم لكِ اتش آند ام كل أساسيات الموضة...',
                 'تجربة تسوق تلبي احتياجاتك...',
             ]}
-            onButtonClick={handleNavigate} // Pass the navigation function
+            onButtonClick={handleNavigate} 
         />
     );
 };

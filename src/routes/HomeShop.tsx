@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import CategoryShop from './CategoryShop';
 
 const HomeShop: React.FC = () => {
-    const navigate = useNavigate(); // Hook to navigate
+    const navigate = useNavigate(); 
 
-    // Navigate to Home category page
+    
     const handleNavigate = () => {
-        navigate('/home/view-all'); // Adjust the path
+        navigate('/home/view-all'); 
     };
 
     return (

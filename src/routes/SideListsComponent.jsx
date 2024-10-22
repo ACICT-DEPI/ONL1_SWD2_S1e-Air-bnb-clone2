@@ -1,4 +1,4 @@
-// SideListsComponent.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const LinkLi = ({ href, text }) => {
   );
 };
 
-// Updated sideLists based on both images
+
 const sideLists = [
   {
     name: "تشكيلات جديدة",

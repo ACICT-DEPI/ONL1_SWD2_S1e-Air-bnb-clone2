@@ -1,6 +1,6 @@
 import React from 'react';
-import { useWishlist } from './WishListContext'; // استخدام السياق السليم
-import Product from '../components/ProductsListPage/ProductCard';// استيراد بطاقة المنتج
+import { useWishlist } from './WishListContext'; 
+import Product from '../components/ProductsListPage/ProductCard';
 
 const WishList = () => {
   const { wishlist } = useWishlist();

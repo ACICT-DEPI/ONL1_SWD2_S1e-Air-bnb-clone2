@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import CategoryShop from './CategoryShop';
 
 const MenShop: React.FC = () => {
-    const navigate = useNavigate(); // Hook to navigate
+    const navigate = useNavigate(); 
 
-    // Function to handle navigation to MenList
+    
     const handleNavigate = () => {
-        navigate('/men/view-all'); // Adjust the path based on your routing structure
+        navigate('/men/view-all'); 
     };
 
     return (
         <CategoryShop
-            category="Men" // Update the category for Men
+            category="Men" 
             header="أحدث صيحات الموضة للرجال"
             text="ملابس أنيقة وعصرية"
             link="#"
@@ -23,7 +23,7 @@ const MenShop: React.FC = () => {
             coverText="تصاميم أنيقة للرجل العصري"
             secondaryImg="https://cdn-eu.dynamicyield.com/api/9876644/images/32a0e9ac8d8da__ms50ee-outdoor-apparel-3x2.webp" // صورة مختلفة للفئة
             description={['تشكيلة ملابس الرجال...', 'أضف لمسة عصرية...']}
-            onButtonClick={handleNavigate} // Pass the navigation function to CategoryShop
+            onButtonClick={handleNavigate} 
         />
     );
 }

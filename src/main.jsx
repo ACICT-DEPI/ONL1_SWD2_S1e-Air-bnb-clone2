@@ -1,4 +1,4 @@
-// src/main.jsx
+
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -9,9 +9,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RootLayout from './routes/RootLayout';
 import ErrorPage from './error-page';
 import { WishListProvider } from './routes/WishListContext'; // تأكد من المسار الصحيح
-import './index.css'; // تأكد من استيراد CSS
+import './index.css'; 
 
-// استيراد الصفحات
+
 import About from './routes/About';
 import HomePage from './routes/HomePage';
 import Login from './routes/Login';
@@ -35,7 +35,7 @@ import BabyShop from './routes/BabyShop';
 import SportsShop from './routes/SportsShop';
 import HomeShop from './routes/HomeShop';
 
-// إنشاء Router
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-// إعداد QueryClient
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -79,7 +79,7 @@ const queryClient = new QueryClient({
   },
 });
 
-// بدء التطبيق
+
 const rootElement = document.getElementById('root');
 
 if (rootElement) {
