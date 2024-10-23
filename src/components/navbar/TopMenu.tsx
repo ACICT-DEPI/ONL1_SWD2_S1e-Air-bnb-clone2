@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const TopMenu = () => {
-    const [User, setUser] = useState()
+    const [User, setUser] = useState<any>()
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user') as string)
         setUser(user)
@@ -13,6 +13,7 @@ const TopMenu = () => {
             <ul className="flex gap-2 text-sm font-normal ">
                 {User ? (
                     <>
+                        <li className="uppercase">مرحبا {User.name}</li>
                         <li>
                             <Link to="/ProfilePage">حسابي</Link>
                         </li>

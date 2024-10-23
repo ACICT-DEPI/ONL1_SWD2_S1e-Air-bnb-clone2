@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductsWithFilters from '../components/ProductsListPage/ProductsWithFilters'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { getProducts } from '../api/FetchProducts'
 import { useQuery } from '@tanstack/react-query'
 import { Check } from 'lucide-react'
 
 const SearchPage = () => {
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
     return (
         <div className="flex flex-col animate-slideUp relative">
             <div className="w-full text-center text-2xl font-bold my-5">
