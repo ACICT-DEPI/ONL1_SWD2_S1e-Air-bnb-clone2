@@ -100,7 +100,7 @@ const Login = () => {
                     </p>
                     <form
                         onSubmit={handleSubmit}
-                        className="flex flex-col gap-11 lg:pl-20 pb-4"
+                        className="flex flex-col gap-11 lg:pl-20 pb-4 w-full"
                     >
                         <Inputs
                             handleChange={handleChange}
@@ -108,10 +108,10 @@ const Login = () => {
                             passwordError={passwordError}
                             emailError={emailError}
                         />
-                        <div className="flex md:flex-row align-middle md:gap-11 flex-col">
+                        <div className="flex w-full md:flex-row align-middle md:gap-11 flex-col">
                             <button
                                 type="submit"
-                                className="bg-black text-white px-4 py-2 text-sm w-full md:w-[40%] h-11 hover:opacity-50 transition-opacity duration-200"
+                                className="bg-black text-white   flex flex-row md:justify-normal justify-center ml-4 text-sm p-2 pr-11 w-full flex-nowrap hover:opacity-50 transition-opacity duration-200"
                             >
                                 تسجيل الدخول
                             </button>
