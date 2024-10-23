@@ -1,15 +1,18 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 
 const ProfilePage = () => {
+    const [orders,setOrders]=useState([])
     const email = localStorage.getItem('email')
     const GetOrders = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:8080/api/user/orders',
+                'https://h-m-server.vercel.app/api/user/orders',
+
+                // 'http://localhost:8080/api/user/orders',
                 {
                     headers: {
                         authorization:
@@ -18,7 +21,12 @@ const ProfilePage = () => {
                 }
             )
 
-            console.log(response.data)
+            // console.log(response.data)
+            setOrders(response.data); 
+            // JSON.stringify(orders)
+            console.log("the orders",orders)
+          
+
         } catch (error) {
             console.log(error)
         }
@@ -122,6 +130,7 @@ const ProfilePage = () => {
                         </li>
                     </ul>
                 </div>
+                
                 <div className="w-[80%]  md:block hidden">
                     <div className="w-[100%]  flex md:justify-start font-hm-sans-arabic  border-b  border-gray-300 justify-center ">
                         <p className="text-xl pb-1 font-light">
@@ -165,6 +174,7 @@ const ProfilePage = () => {
                     <div className="w-[100%]   md:justify-start font-hm-sans-arabic  border-b  border-gray-300 justify-center my-6 ">
                         <p className="text-lg pb-1 font-light">تفاصيل الحساب</p>
                     </div>
+
                     <p className="md:text-sm  text-lg  md:w-auto w-full font-light">
                         عنوان البريد الالكتروني
                     </p>
@@ -172,6 +182,8 @@ const ProfilePage = () => {
                         {' '}
                         {email}
                     </p>
+                  
+               
                 </div>
             </div>
         </>
@@ -179,3 +191,4 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage
+
