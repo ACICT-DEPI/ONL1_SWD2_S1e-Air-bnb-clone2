@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const StoreFinder = () => {
-    const [activeView, setActiveView] = useState("map"); // 'map' or 'list'
+    const [activeView, setActiveView] = useState("map");
     const [selectedBranch, setSelectedBranch] = useState(null);
 
     const branches = [
@@ -34,7 +34,7 @@ const StoreFinder = () => {
 
     const showView = (view) => {
         setActiveView(view);
-        setSelectedBranch(null); // Reset branch details on view change
+        setSelectedBranch(null);
     };
 
     return (
@@ -111,7 +111,6 @@ const StoreFinder = () => {
                         style={{ border: 0 }}
                         allowFullScreen=""
                         loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                 </div>
             )}
