@@ -11,6 +11,7 @@ const Login = () => {
 
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const [validError,setValidError]=useState('')
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -69,6 +70,7 @@ const Login = () => {
 
                 const result = await response.json()
                 console.log(result)
+                setValidError('')
 
                 if (response.ok) {
                     console.log(result.token)
@@ -76,12 +78,16 @@ const Login = () => {
                     localStorage.setItem('email', formLoginData.email)
                     localStorage.setItem('user', JSON.stringify(result.data))
                     document.location.assign('/ProfilePage')
+                    setValidError('')
                 } else {
                     console.log('فشل في تسجيل الدخول: ' + result.message)
+                    setValidError('فشل في تسجيل الدخول: ' + result.message)
                 }
             } catch (err) {
                 console.error('Login Error:', err)
                 console.log('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.')
+                setValidError('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.')
+                
             }
         }
     }
@@ -108,6 +114,7 @@ const Login = () => {
                             passwordError={passwordError}
                             emailError={emailError}
                         />
+                         {validError && <span className="text-red-600 m-0 p-0 text-sm">{validError}</span>} 
                         <div className="flex w-full md:flex-row align-middle md:gap-11 flex-col">
                             <button
                                 type="submit"

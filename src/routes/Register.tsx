@@ -14,6 +14,7 @@ const Register = () => {
     const [nameError, setNameError] = useState('') 
     const [emailError, setEmailError] = useState('') 
     const [passwordError, setPasswordError] = useState('') 
+    const [validError,setValidError]=useState('')
 
     
     const namePattern = /^[a-zA-Z\u0621-\u064A ]{3,}$/
@@ -91,9 +92,11 @@ const Register = () => {
                     console.log('User Registered:', result)
                 } else {
                     console.log('فشل في إنشاء الحساب: ' + result.message)
+                    setValidError('فشل في إنشاء الحساب: ' + result.message)
                 }
             } catch (err) {
                 console.error('Registration Error:', err)
+                setValidError('Registration Error:'+ err)
             }
         }
     }
@@ -144,6 +147,7 @@ const Register = () => {
                             passwordError={passwordError}
                             emailError={emailError}
                         />
+                          {validError && <span className="text-red-600 m-0 p-0 text-sm">{validError}</span>} 
 
                         <div className="flex flex-col gap-2 w-full lg:justify-items-start justify-items-center items-center lg:items-start">
                             <ReCAPTCHA sitekey="6LdHf1kqAAAAAIn60o8LzP1KtOgsA07k1gvo00Vd" />
