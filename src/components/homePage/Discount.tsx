@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import React from "react";
+import { Link } from "react-router-dom"; // استيراد Link من react-router-dom
 
 const Discount = () => {
     return (
@@ -10,31 +10,31 @@ const Discount = () => {
             <p className="text-lg lg:text-2xl font-bold text-white">
                 في محلاتنا واونلاين
             </p>
-            <div className="hidden lg:flex  justify-center gap-4 ">
-                <a
-                    href="#"
-                    className="bg-transparent border px-5 py-1 text-white "
+            <div className="hidden lg:flex justify-center gap-4">
+                <Link
+                    to="/women"
+                    className="bg-transparent border px-5 py-1 text-white"
                 >
                     النساء
-                </a>
-                <a
-                    href="#"
-                    className="bg-transparent border px-5 py-1 text-white "
+                </Link>
+                <Link
+                    to="/men"
+                    className="bg-transparent border px-5 py-1 text-white"
                 >
                     الرجال
-                </a>
-                <a
-                    href="#"
-                    className="bg-transparent border px-5 py-1 text-white "
+                </Link>
+                <Link
+                    to="/kids"
+                    className="bg-transparent border px-5 py-1 text-white"
                 >
                     الأطفال
-                </a>
-                <a
-                    href="#"
-                    className="bg-transparent border px-5 py-1 text-white "
+                </Link>
+                <Link
+                    to="/home"
+                    className="bg-transparent border px-5 py-1 text-white"
                 >
-                    اتش آند ام هوم{" "}
-                </a>
+                    اتش آند ام هوم
+                </Link>
             </div>
             <p className="text-xs">يسري العرض حتى نفاذ الكمية.</p>
         </div>

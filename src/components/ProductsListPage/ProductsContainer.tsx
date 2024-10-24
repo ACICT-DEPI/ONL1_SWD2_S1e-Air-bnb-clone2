@@ -1,47 +1,39 @@
-import React, { useState } from 'react'
-import Product from './ProductCard'
+import React, { useState } from "react";
+import Product from "./ProductCard";
+import { WishlistItem } from "../../routes/WishListContext";
 
-const ProductsContainer = ({
-    products,
-}: {
-    products: {
-        image: string
-        name: string
-        price: number
-        id: string
-    }[]
-}) => {
-    const [prdouctsNumber, setprdouctsNumber] = useState(10)
+const ProductsContainer = ({ products }: { products: WishlistItem[] }) => {
+    const [productsNumber, setProductsNumber] = useState(12);
 
     const loadMore = () => {
-        setprdouctsNumber(prdouctsNumber + 10)
-    }
+        setProductsNumber(productsNumber + 12);
+    };
 
     return (
         <>
-            <div className=" flex-wrap flex justify-center xl:justify-start mt-5">
-                {products.slice(0, prdouctsNumber).map((product, index) => (
+            <div className="flex flex-wrap justify-center xl:justify-start mt-5">
+                {products.slice(0, productsNumber).map((product) => (
                     <Product
+                        key={product.id}
                         img={product.image}
                         name={product.name}
                         price={product.price}
                         id={product.id}
-                        key={index}
                     />
                 ))}
             </div>
-            {products.length > prdouctsNumber && (
+            {products.length > productsNumber && (
                 <div className="w-full items-center justify-center flex">
                     <button
                         onClick={loadMore}
-                        className="w-fit mx-auto text-center  text-white bg-black  px-10 py-1"
+                        className="w-fit mx-auto text-center text-white bg-black px-10 py-1"
                     >
                         تحميل المزيد من المنتجات
                     </button>
                 </div>
             )}
         </>
-    )
-}
+    );
+};
 
-export default ProductsContainer
+export default ProductsContainer;

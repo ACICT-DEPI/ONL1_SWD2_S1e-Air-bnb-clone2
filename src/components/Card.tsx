@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({
     name,
@@ -7,10 +7,10 @@ const Card = ({
     price,
     id,
 }: {
-    name: string
-    image: string
-    price: number
-    id: string
+    name: string;
+    image: string;
+    price: number;
+    id: string;
 }) => {
     return (
         <div className="min-w-[245px] h-[411px] px-2">
@@ -29,7 +29,7 @@ const Card = ({
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Card
+export default Card;

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import Card from './Card'
+import Card from './Card';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { shuffleArray } from '../utils'
 import { useQuery } from '@tanstack/react-query'
