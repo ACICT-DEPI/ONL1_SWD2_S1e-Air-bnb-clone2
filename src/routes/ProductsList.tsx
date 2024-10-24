@@ -29,7 +29,6 @@ const ProductsList: React.FC<ProductsListProps> = ({
             <ProductsNaviagtion />
             <div className="flex justify-between mt-5">
                 <SideLists />
-                <SideLists />
                 <main className="flex flex-col flex-1">
                     <h1 className="sm:text-5xl text-3xl text-center sm:text-start mb-8">
                         {shop === "kids"
@@ -46,9 +45,6 @@ const ProductsList: React.FC<ProductsListProps> = ({
                             ? "هوم"
                             : shop}
                     </h1>
-                    {/* Pass activeCategory to ProductsWithFilters */}
-                    <ProductsWithFilters activeCategory={activeCategory} />
-                    {/* Pass activeCategory to ProductsWithFilters */}
                     <ProductsWithFilters activeCategory={activeCategory} />
                 </main>
             </div>
