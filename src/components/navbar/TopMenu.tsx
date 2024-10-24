@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const TopMenu = () => {
-    const [User, setUser] = useState<any>()
+    const [User, setUser] = useState<any>();
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user') as string)
-        setUser(user)
-    }, [])
+        const user = JSON.parse(localStorage.getItem("user") as string);
+        setUser(user);
+    }, []);
 
     return (
         <div className=" mx-auto w-fit   justify-center items-center sm:py-1 py-0 hidden lg:flex">
@@ -20,9 +20,9 @@ const TopMenu = () => {
                         <li>
                             <button
                                 onClick={() => {
-                                    setUser(undefined)
-                                    localStorage.removeItem('user')
-                                    localStorage.removeItem('token')
+                                    setUser(undefined);
+                                    localStorage.removeItem("user");
+                                    localStorage.removeItem("token");
                                 }}
                             >
                                 تسجيل الخروج
@@ -40,14 +40,14 @@ const TopMenu = () => {
                     </>
                 )}
                 <li>
-                    <a href="#">البحث عن محلاتنا</a>
+                    <Link to="/storefinder">البحث عن محلاتنا</Link>
                 </li>
                 <li>
-                    <a href="#">English</a>
+                    <Link to="/about">معلومات عنا</Link>
                 </li>
             </ul>
         </div>
-    )
-}
+    );
+};
 
-export default TopMenu
+export default TopMenu;
