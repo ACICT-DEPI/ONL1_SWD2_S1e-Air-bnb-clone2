@@ -1,6 +1,6 @@
 import React from "react"
 import GalleryImg from "./GalleryImg"
-const ProductGallery = ({ images = [],description , id }) => {
+const ProductGallery = ({ images = [],description , id }:{images:string[] , description:string , id:string}) => {
     return <>
         <div className="gallery-container w-2/3 flex flex-col gap-3">
             <div className="details-Gallery flex lg:flex-row sm:flex-col gap-3">
