@@ -56,7 +56,7 @@ const SideBar = (props) => {
     };
     return (
         <>
-            <div className="product-sideBar w-3/3 h-fit sticky top-0 pr-5 flex lg:flex-col flex-row flex-wrap lg:w-1/3 sm:gap-20 lg:gap-0">
+            <div className="product-sideBar w-3/3 h-fit sticky top-0 pr-0 xl:pr-5 flex lg:flex-col flex-row flex-wrap lg:w-1/3 sm:gap-20 lg:gap-0 ">
                 <>
                     <div className="sec1">
                         <div className="product-title text-xl mb-4 mt-3">{props.title}</div>
